@@ -230,7 +230,5 @@ cleaned_gss_2018 <- cleaned_gss_2018 |>
       )
   )
 
-
-
 #### Save data ####
 write_csv(cleaned_gss_2018, "outputs/data/cleaned_gss_2018.csv")
