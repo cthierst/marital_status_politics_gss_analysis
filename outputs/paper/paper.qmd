@@ -2,50 +2,135 @@
 title: "gss marriage politics analysis"
 subtitle: "subtitle"
 author: 
-  - First author
-  - Another author
+  - Chloe Thierstein
 thanks: "Code and data are available at: https://github.com/cthierst/marital_status_political_affiliation_gss_analysis.git"
-date: "`r Sys.time()`"
+date: "April 20, 2023"
 date-format: "D MMMM YYYY"
 abstract: "First sentence. Second sentence. Third sentence. Fourth sentence."
 format: pdf
-number-sections: true
+toc: TRUE
+number-sections: TRUE
 bibliography: references.bib
 ---
 
 ```{r}
+#| include: false
 
+#### Load Library ####
+library(tidyverse)
+library(janitor)
+library(ggplot2)
+library(RColorBrewer)
+library(kableExtra)
+library(knitr)
+library(dplyr)
+library(here)
+library(RColorBrewer)
+library(kableExtra)
+library(patchwork)
+library(readr)
+library(here)
+
+#### Import cleaned_gss_2021.csv ####
+cleaned_gss_2021 <-
+  read.csv(here::here("inputs/clean_data/cleaned_gss_2021.csv"))
+
+cleaned_gss_2018 <-
+  read.csv(here::here("inputs/clean_data/cleaned_gss_2018.csv"))
+
+cleaned_gss_2016 <-
+  read.csv(here::here("inputs/clean_data/cleaned_gss_2016.csv"))
+
+cleaned_gss_2014 <-
+  read.csv(here::here("inputs/clean_data/cleaned_gss_2014.csv"))
 ```
-
 
 # Introduction
 
-
-
 # Data {#sec-data}
 
+## Data Management
 
+This paper uses the R statistical programming language [@citeR], along with several packages, tidyverse [@citetidy]
+
+## Source
+
+## Sampling
+
+## Key Features
 
 ```{r}
-#| label: fig-bills
-#| fig-cap: Bills of penguins
-#| echo: false
+#| include: false
+
+#### Create Variable Description Tibble ####
+
+variable_table <-
+  tibble(
+    "Variable" = c(
+      "partyid",
+      "polviews",
+      "marital",
+      "sex",
+      "cohort"
+    ),
+    "Variable Description" = c(
+      "Self-ascribed belonging to the Republican, Democratic, or Indepedent parties",
+    "Self-ascribed placement on a Likert scale from 'extremely liberal to extremely conservative'",
+    "Marital status of respondent",
+    "Self-ascribed sex of respondent",
+    "Generational cohort that respondent belongs to "
+    )
+  )
 
 ```
 
-
 ```{r}
-#| label: fig-planes
-#| fig-cap: Relationship between wing length and width
 #| echo: false
 #| warning: false
-#| message: false
-
+#| label: tbl-1
+#| tbl-cap: "Variable Descriptions"
+#### Add Variable Table ####
+variable_table |>
+  kable(booktabs = TRUE) |>
+  kable_styling(font_size = 9, latex_options = "hold_position")
 ```
 
-Talk way more about it. 
+```{r}
+#| include: false
+#### Create Variable Description Tibble ####
 
+variable_measure_table <-
+  tibble(
+    "Variable" = c(
+      "partyid",
+      "polviews",
+      "marital",
+      "sex",
+      "cohort"
+    ),
+    "Variable Measurement" = c(
+      "Strong Democrat, Not Very Strong Democrat, Independent (Close to Democrat), Independent (Neither), Independent (Close to Republican), Not Very Strong Republican, Strong Republican",
+      "Extremely Liberal, Liberal, Slightly Liberal, Moderate, Slightly Conservative, Conservative, Extremely Conservative",
+      "Married, Never Married, Separated, Divorced, Widowed",
+      "Female, Male",
+      "Post-War, Boomer, Gen X, Millenial, Gen Z"
+    )
+  )
+```
 
+```{r}
+#| echo: false
+#| warning: false
+#| label: tbl-2
+#| tbl-cap: "Variable Measurements"
+#### Add Variable Table ####
+variable_measure_table |>
+  kable(booktabs = TRUE) |>
+  column_spec(2, width = "41em")|>
+  kable_styling(font_size = 9, latex_options = "hold_position")
+```
+
+## Bias and Ethics
 
 # Model
 
@@ -55,8 +140,9 @@ Here we briefly describe the Bayesian analysis model used to investigate... Back
 
 ## Model set-up
 
-Define $y_i$ as the number of seconds that the plane remained aloft. Then $\beta_i$ is the wing width and $\gamma_i$ is the wing length, both measured in millimeters.  
+Define $y_i$ as the number of seconds that the plane remained aloft. Then $\beta_i$ is the wing width and $\gamma_i$ is the wing length, both measured in millimeters.
 
+```{=tex}
 \begin{align} 
 y_i|\mu_i, \sigma &\sim \mbox{Normal}(\mu_i, \sigma) \\
 \mu_i &= \alpha + \beta_i + \gamma_i\\
@@ -65,16 +151,14 @@ y_i|\mu_i, \sigma &\sim \mbox{Normal}(\mu_i, \sigma) \\
 \gamma &\sim \mbox{Normal}(0, 2.5) \\
 \sigma &\sim \mbox{Exponential}(1)
 \end{align}
-
+```
 We run the model in R [@citeR] using the `rstanarm` package of @rstanarm. We use the default priors from `rstanarm`.
-
 
 ### Model justification
 
 We expect a positive relationship between the size of the wings and time spent aloft. In particular...
 
 We can use maths by including latex between dollar signs, for instance $\theta$.
-
 
 # Results
 
@@ -108,14 +192,11 @@ modelsummary::modelsummary(
 )
 ```
 
-
-
-
 # Discussion
 
 ## First discussion point {#sec-first-point}
 
-If my paper were 10 pages, then should be be at least 2.5 pages. The discussion is a chance to show off what you know and what you learnt from all this. 
+If my paper were 10 pages, then should be be at least 2.5 pages. The discussion is a chance to show off what you know and what you learnt from all this.
 
 ## Second discussion point
 
@@ -129,36 +210,6 @@ Weaknesses and next steps should also be included.
 
 \appendix
 
-# Appendix {-}
-
-
-# Additional data details
-
-# Model details {#sec-model-details}
-
-## Posterior predictive check
-
-In @fig-ppcheckandposteriorvsprior-1 we implement a posterior predictive check. This shows...
-
-In @fig-ppcheckandposteriorvsprior-2 we compare the posterior with the prior. This shows... 
-
-
-#| fig-subcap: ["Posterior prediction check", "Comparing the posterior with the prior"]
-
-```
-
-## Diagnostics
-
-@fig-stanareyouokay-1 is a trace plot. It shows... This suggests...
-
-@fig-stanareyouokay-2 is a Rhat plot. It shows... This suggests...
-
-
-
-
 \newpage
 
-
 # References
-
-
