@@ -18,7 +18,7 @@ library(labelled)
 #### Clean data ####
 
 #### Load Raw Data ####
-raw_gss_2014 <- read_csv(("inputs/data/raw_gss_2014.csv"))
+raw_gss_2014 <- read_csv(("inputs/raw_data/raw_gss_2014.csv"))
 
 
 #### Data Cleaning ####
@@ -30,7 +30,7 @@ cleaned_gss_2014 <-
 #### Select Relevant Columns ####
 cleaned_gss_2014 <-
   cleaned_gss_2014 |>
-  select(partyid, polviews, attend, pray, life, marital, sex, cohort)
+  select(partyid, polviews, marital, sex, cohort)
 
 #### Removing NA Rows from Data ####
 cleaned_gss_2014 <- 
@@ -77,38 +77,6 @@ cleaned_gss_2014 <- cleaned_gss_2014 |>
       )
   )
 
-#### Re-coding ... ####
-cleaned_gss_2014 <- cleaned_gss_2014 |>
-  mutate(
-    attend =
-      recode(
-        attend,
-        "0" = "Never",
-        "1" = "Less Than Once a Year",
-        "2" = "About Once or Twice a Year",
-        "3" = "Several Times a Year",
-        "4" = "About Once a Month",
-        "5" = "2-3 Times a Month",
-        "6" = "Nearly Every Week",
-        "7" = "Every Week",
-        "8" = "Several Times a Week"
-      )
-  )
-
-#### Re-coding ... ####
-cleaned_gss_2014 <- cleaned_gss_2014 |>
-  mutate(
-    pray =
-      recode(
-        pray,
-        "1" = "Several Times a Day",
-        "2" = "Once a Day",
-        "3" = "Several Times a Week",
-        "4" = "Once a Week",
-        "5" = "Less Than Once a Week",
-        "6" = "Never"
-      )
-  )
 
 
 #### Re-coding ... ####
@@ -125,17 +93,6 @@ cleaned_gss_2014 <- cleaned_gss_2014 |>
       )
   )
 
-#### Re-coding ... ####
-cleaned_gss_2014 <- cleaned_gss_2014 |>
-  mutate(
-    life =
-      recode(
-        life,
-        "1" = "Exciting",
-        "2" = "Routine",
-        "3" = "Dull"
-      )
-  )
 
 #### Dropping Cohort Rows with "WWII" Response ####
 cleaned_gss_2014<-cleaned_gss_2014[!(cleaned_gss_2014$cohort =="1925" | cleaned_gss_2014$cohort == "1926" | cleaned_gss_2014$cohort == "1927"),]
@@ -236,4 +193,4 @@ cleaned_gss_2014 <- cleaned_gss_2014 |>
 
 
 #### Save data ####
-write_csv(cleaned_gss_2014, "outputs/data/cleaned_gss_2014.csv")
+write_csv(cleaned_gss_2014, "inputs/clean_data/cleaned_gss_2014.csv")
