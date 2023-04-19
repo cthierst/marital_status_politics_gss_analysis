@@ -1,1 +1,11 @@
-# marital_status_political_affiliation_gss_analysis
+# GSS Marriage Politics Analysis
+
+## Overview
+
+This repo...
+
+## File Structure
+
+The repo is structured as:
+
+-   
