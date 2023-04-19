@@ -51,7 +51,7 @@ cleaned_gss_2014 <-
 
 ## Data Management
 
-This paper uses the R statistical programming language [@citeR], along with several packages, tidyverse [@citetidy]
+This paper uses the R statistical programming language [@citeR], along with several packages, tidyverse [@citetidyverse], janitor [@citejanitor], here [@citehere], and [@citedplyr]. All figures in this paper were created using the packages ggplot2 [@citeggplot2] and the tables were created using knitr [@citeknitr] and kableExtra[@citekablextra]. The color styling of graphs has been created using RColorBrewer [@citecolorbrewer]. The model in this paper was created using the rstanarm [@citerstanarm] package.
 
 ## Source
 
@@ -89,7 +89,7 @@ variable_table <-
 #| warning: false
 #| label: tbl-1
 #| tbl-cap: "Variable Descriptions"
-#### Add Variable Table ####
+#### Add Variable Description Table ####
 variable_table |>
   kable(booktabs = TRUE) |>
   kable_styling(font_size = 9, latex_options = "hold_position")
@@ -97,7 +97,7 @@ variable_table |>
 
 ```{r}
 #| include: false
-#### Create Variable Description Tibble ####
+#### Create Variable Measurement Tibble ####
 
 variable_measure_table <-
   tibble(
@@ -123,7 +123,7 @@ variable_measure_table <-
 #| warning: false
 #| label: tbl-2
 #| tbl-cap: "Variable Measurements"
-#### Add Variable Table ####
+#### Add Variable Measurement Table ####
 variable_measure_table |>
   kable(booktabs = TRUE) |>
   column_spec(2, width = "41em")|>
