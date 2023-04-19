@@ -51,13 +51,58 @@ cleaned_gss_2014 <-
 
 ## Data Management
 
-This paper uses the R statistical programming language [@citeR], along with several packages, tidyverse [@citetidyverse], janitor [@citejanitor], here [@citehere], and [@citedplyr]. All figures in this paper were created using the packages ggplot2 [@citeggplot2] and the tables were created using knitr [@citeknitr] and kableExtra[@citekablextra]. The color styling of graphs has been created using RColorBrewer [@citecolorbrewer]. The model in this paper was created using the rstanarm [@citerstanarm] package.
+This paper uses the R statistical programming language [@citeR], along with several packages, tidyverse [@citetidyverse], janitor [@citejanitor], here [@citehere], and [@citedplyr]. All figures in this paper were created using the packages ggplot2 [@citeggplot2] and the tables were created using knitr [@citeknitr] and kableExtra[@citekablextra]. Combinations of figures were created using [@citepatchwork] The color styling of graphs has been created using RColorBrewer \[@citecolorbrewer\]. The model in this paper was created using the rstanarm [@citerstanarm] package.
 
 ## Source
 
+The data within this paper was extracted from the 2014, 2016, 2018 and 2021 United States General Social Survey (GSS). This survey is a series of nationally representative cross-sectional interviews that collects data on contemporary American society to explain and monitor trends in attitudes, opinions and behaviours [@citegsscodebook]. It began tracking these trends in 1972, and has primarily used in-person data collection as its method of data collection [@citegsscodebook]. In 2021, the survey moved to an address-based sampling method with a focus on web-based self-administered questionnaires [@citegsscodebook].
+
 ## Sampling
 
+The United States General Social Survey (GSS) samples adults over the age of 18 in the United States who are not currently living in institutional housing [@citegsscodebook]. @tbl-1 shows the total number of responses collected by the GSS and the total number of responses used in the analysis of this paper, per year.
+
+```{r}
+#| include: false
+
+#### Create Variable Description Tibble ####
+
+variable_table <-
+  tibble(
+    "Year" = c(
+      "2014",
+      "2016",
+      "2018",
+      "2021"
+    ),
+    "Total # of Responses" = c(
+    "2,538",
+    "2,867",
+    "2,348",
+    "4,032"
+    ),
+    "Total # of Responses Used in Analysis" = c(
+      "2,322",
+      "2,641",
+      "2,143",
+      "3,529"
+    )
+  )
+```
+
+```{r}
+#| echo: false
+#| warning: false
+#| label: tbl-1
+#| tbl-cap: "Number of Responses"
+#### Add Variable Description Table ####
+variable_table |>
+  kable(booktabs = TRUE) |>
+  kable_styling(font_size = 9, latex_options = "hold_position")
+```
+
 ## Key Features
+
+This paper explores the estimands, does political affiliation as measured through political views and identification impact marital status' and what influence does generational cohort and sex have. This paper explores these estimands through an analysis of the sample populations described in @tbl-1 under "Total \# of Responses Used in Analysis." Responses were removed to account for unanswered or not applicable responses. I did this to ensure the representative and completeness of all variables analyzed. The variables selected for analysis can be viewed in @tbl-2 and their measurement levels can be viewed in @tbl-3. Responses were measured using Likert scales which measure respondents' opinions to questions, and multiple choice questions.
 
 ```{r}
 #| include: false
@@ -87,7 +132,7 @@ variable_table <-
 ```{r}
 #| echo: false
 #| warning: false
-#| label: tbl-1
+#| label: tbl-2
 #| tbl-cap: "Variable Descriptions"
 #### Add Variable Description Table ####
 variable_table |>
@@ -121,7 +166,7 @@ variable_measure_table <-
 ```{r}
 #| echo: false
 #| warning: false
-#| label: tbl-2
+#| label: tbl-3
 #| tbl-cap: "Variable Measurements"
 #### Add Variable Measurement Table ####
 variable_measure_table |>
@@ -152,7 +197,7 @@ y_i|\mu_i, \sigma &\sim \mbox{Normal}(\mu_i, \sigma) \\
 \sigma &\sim \mbox{Exponential}(1)
 \end{align}
 ```
-We run the model in R [@citeR] using the `rstanarm` package of @rstanarm. We use the default priors from `rstanarm`.
+We run the model in R [@citeR] using the `rstanarm` package of [@citerstanarm]. We use the default priors from `rstanarm`.
 
 ### Model justification
 
