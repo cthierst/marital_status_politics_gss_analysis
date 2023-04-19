@@ -37,3 +37,13 @@ vignettes/*.pdf
 
 # R Environment Variables
 .Renviron
+
+
+# Original Data from US GSS https://gss.norc.org/Get-The-Data
+stata_data/
+
+# Raw data from US GSS https://gss.norc.org/Get-The-Data
+raw_data/
+
+# Clean data from US GSS https://gss.norc.org/Get-The-Data
+clean_data/
