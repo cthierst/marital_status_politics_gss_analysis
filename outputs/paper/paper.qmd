@@ -206,10 +206,10 @@ variable_table <-
       "cohort"
     ),
     "Variable Description" = c(
-      "Self-ascribed belonging to the Republican, Democratic, or Indepedent parties",
-    "Self-ascribed placement on the political spectrum from 'extremely liberal to extremely conservative'",
+      "Self-described identification with a political party",
+    "Self-described placement on the political spectrum",
     "Marital status of respondent",
-    "Self-ascribed sex of respondent",
+    "Self-described sex of respondent",
     "Generational cohort that respondent belongs to "
     )
   )
@@ -270,19 +270,19 @@ It is important to acknowledge that observations and data from the 2014, 2016, 2
 
 One point of bias that does need to be addressed is the difference in surveying techniques. The US General Social Survey (GSS) was conducted in person in the years 2014, 2016, and 2018, however, due to the COVID-19 pandemic, it was changed to being an online survey resulting in a higher rate of non-response. The 2021 GSS controlled for this by adjusting population totals to ensure that the weighted totals closely matched the U.S. Census Bureau's estimates of sex, age, education, race, region, and ethnicity [@citegsscodebook]. Additionally, due to the survey being online, household enumeration was impossible, so households were asked to identity the adult with the most recent birthday [@citegsscodebook]. This is problematic as it may have missed some household residents who were temporarily living abroad, adult children, etc. [@citegsscodebook]. Measures were taken to control for this by conducting tests of significant to look for differences in trend estimates [@citegsscodebook]. Additionally, in the years where the survey was conducted in-person, there may have been instances of variance in how interviewers asked questions which could have led to bias in the results.
 
-### Marital Status and Birth Cohort
+### Marital Status and Generational Cohort
 
-Another important point of bias to acknowledge is the effect of birth cohort on marital status. As can be seen in @fig-1, the effects of age on birth cohorts largely impacts the marital status. For example, in 2014, there are significantly more respondent's belonging to the "Post-War" cohort and no respondent's belonging to the "Gen Z" cohort. This is influential as the 2014 data is missing marital rates from the "Gen Z" cohort as they were not old enough to be surveyed, thereby distorting marital rates in that year when compared to the follow three years. Additionally, due to the young age of "Gen Z", respondents many have not reached the age where they are looking for long-term relationships resulting in very few being married and even less being divorced and widowed, as shown in @fig-1. However, it is important to include them in this analysis as they are a growing and extremely relevant cohort in demographic studies. Additionally, it is noticeable that trends in marriage between birth cohorts are shifting as can be seen by the increase of "Never Married" respondents between cohorts each year. This is significant as it may act as a co-indicator of marital rates in the U.S.
+Another important point of bias to acknowledge is the effect of generational cohort on marital status. As can be seen in @fig-1, the effects of age on generational cohorts largely impacts the marital status. For example, in 2014, there are significantly more respondent's belonging to the "Post-War" cohort and no respondent's belonging to the "Gen Z" cohort. This is influential as the 2014 data is missing marital rates from the "Gen Z" cohort as they were not old enough to be surveyed, thereby distorting marital rates in that year when compared to the follow three years. Additionally, due to the young age of "Gen Z", respondents many have not reached the age where they are looking for long-term relationships resulting in very few being married and even less being divorced and widowed, as shown in @fig-1. However, it is important to include them in this analysis as they are a growing and extremely relevant cohort in demographic studies. Additionally, it is noticeable that trends in marriage between generational cohorts are shifting as can be seen by the increase of "Never Married" respondents between cohorts each year. This is significant as it may act as a co-indicator of marital rates in the U.S.
 
 ```{r}
 #| include: false
 #| message: false
-#### Creating Graph for comparison 2021 respondent's birth cohort against marital status ####
+#### Creating Graph for comparison 2021 respondent's generational cohort against marital status ####
 cohort_marital_2021 <- ggplot(data=cleaned_gss_2021, aes(x = cohort, fill = marital)) + #assign ggplot to new variable in order to use patchwork package later
   geom_bar(width =.8) +
   theme_classic() + 
   labs(
-    x = "Birth Cohort",
+    x = "Generational Cohort",
     y = "# of Respondents ",
     fill = "Marital Status",
     caption = "2021 GSS"
@@ -295,12 +295,12 @@ cohort_marital_2021 <- ggplot(data=cleaned_gss_2021, aes(x = cohort, fill = mari
 ```{r}
 #| include: false
 #| message: false
-#### Creating Graph for comparison 2018 respondent's birth cohort against marital status ####
+#### Creating Graph for comparison 2018 respondent's generational cohort against marital status ####
 cohort_marital_2018 <- ggplot(data=cleaned_gss_2018, aes(x = cohort, fill = marital)) + #assign ggplot to new variable in order to use patchwork package later
   geom_bar(width =.8) +
   theme_classic() + 
   labs(
-    x = "Birth Cohort",
+    x = "enerational Cohort",
     y = "# of Respondents ",
     fill = "Marital Status",
     caption = "2018 GSS"
@@ -313,12 +313,12 @@ cohort_marital_2018 <- ggplot(data=cleaned_gss_2018, aes(x = cohort, fill = mari
 #| include: false
 #| message: false
 
-#### Creating Graph for comparison 2016 respondent's birth cohort against marital status ####
+#### Creating Graph for comparison 2016 respondent's generational cohort against marital status ####
 cohort_marital_2016 <- ggplot(data=cleaned_gss_2016, aes(x = cohort, fill = marital)) + #assign ggplot to new variable in order to use patchwork package later
   geom_bar(width =.8) +
   theme_classic() + 
   labs(
-    x = "Birth Cohort",
+    x = "Generational Cohort",
     y = "# of Respondents",
     fill = "Marital Status",
     caption = "2016 GSS"
@@ -332,12 +332,12 @@ cohort_marital_2016 <- ggplot(data=cleaned_gss_2016, aes(x = cohort, fill = mari
 #| include: false
 #| message: false
 
-#### Creating Graph for comparison 2014 respondent's birth cohort against marital status ####
+#### Creating Graph for comparison 2014 respondent's generational cohort against marital status ####
 cohort_marital_2014 <- ggplot(data=cleaned_gss_2014, aes(x = cohort, fill = marital)) + #assign ggplot to new variable in order to use patchwork package later
   geom_bar(width =.8) +
   theme_classic() + 
   labs(
-    x = "Birth Cohort",
+    x = "Generational Cohort",
     y = "# of Respondents",
     fill = "Marital Status",
     caption = "2014 GSS"
@@ -351,8 +351,8 @@ cohort_marital_2014 <- ggplot(data=cleaned_gss_2014, aes(x = cohort, fill = mari
 #| echo: false
 #| warning: false
 #| label: fig-1
-#| fig-cap: "2014-2021 Comparisons of Birth Cohort Against Respondent Marital Status"
-#### Using Patchwork Package to Combine Two Graphs ####
+#| fig-cap: "2014-2021 Comparisons of Generational Cohort Against Respondent Marital Status"
+#### Using Patchwork Package to Combine four Graphs ####
 (cohort_marital_2021) + (cohort_marital_2018) + (cohort_marital_2016) + (cohort_marital_2014) +
   plot_annotation(tag_levels = 'A') +
   plot_layout(ncol = 2)+
@@ -366,6 +366,7 @@ The last points of bias that must be acknowledged is the response rate of female
 ```{r}
 #| include: false
 #| message: false
+
 #### Creating Graph for comparison 2021 respondent's sex against marital status ####
 sex_marital_2021 <- ggplot(data=cleaned_gss_2021, aes(x = sex, fill = marital)) + #assign ggplot to new variable in order to use patchwork package later
   geom_bar(width =.8) +
@@ -383,7 +384,7 @@ sex_marital_2021 <- ggplot(data=cleaned_gss_2021, aes(x = sex, fill = marital)) 
 ```{r}
 #| include: false
 #| message: false
-#| 
+
 #### Creating Graph for comparison 2018 respondent's sex against marital status ####
 sex_marital_2018 <- ggplot(data=cleaned_gss_2018, aes(x = sex, fill = marital)) + #assign ggplot to new variable in order to use patchwork package later
   geom_bar(width =.8) +
@@ -440,14 +441,14 @@ sex_marital_2014 <- ggplot(data=cleaned_gss_2014, aes(x = sex, fill = marital)) 
 #| warning: false
 #| label: fig-2
 #| fig-cap: "2014-2021 Comparisons of Respondent's Sex Against Marital Status"
-#### Using Patchwork Package to Combine Two Graphs ####
+#### Using Patchwork Package to Combine four Graphs ####
 (sex_marital_2021) + (sex_marital_2018) + (sex_marital_2016) + (sex_marital_2014) +
   plot_annotation(tag_levels = 'A') +
   plot_layout(ncol = 2)+
   plot_layout(guides = "collect")
 ```
 
-## Marital Status and Self-Ascribed Belonging to Political Parties
+## Marital Status and Self-Described Belonging to Political Parties
 
 ```{r}
 #| include: false
@@ -531,7 +532,9 @@ partyid_marital_2014 <- ggplot(data=cleaned_gss_2014, aes(x = partyid, fill = ma
 #| echo: false
 #| warning: false
 #| label: fig-3
-#| fig-cap: "2014-2021 Comparisons of Political Party Identity Against Respondent's Marital Status"
+#| fig-cap: "2014-2021 Comparisons Respondent's Marital Status vs. Identification with a Political Party"
+
+
 #### Using Patchwork Package to Combine Two Graphs ####
 (partyid_marital_2021) + (partyid_marital_2018) + (partyid_marital_2016) + (partyid_marital_2014)+ 
   plot_annotation(tag_levels = 'A') +
@@ -543,7 +546,7 @@ partyid_marital_2014 <- ggplot(data=cleaned_gss_2014, aes(x = partyid, fill = ma
 #| echo: false
 #| warning: false
 #| label: tbl-4
-#| tbl-cap: "Marital Status vs. Self-Ascribed Belonging to Political Parties of 2021 Respondents"
+#| tbl-cap: "2021 Respondent's Marital Status vs. Self-Described Identification with a Political Parties"
 
 cleaned_gss_2021|>
   tabyl(partyid, marital)|>
@@ -564,7 +567,7 @@ cleaned_gss_2021|>
 #| echo: false
 #| warning: false
 #| label: tbl-5
-#| tbl-cap: "Marital Status vs. Self-Ascribed Belonging to Political Parties of 2018 Respondents"
+#| tbl-cap: "2018 Respondent's Marital Status vs. Self-Described Identification with a Political Parties"
 
 cleaned_gss_2018|>
   tabyl(partyid, marital)|>
@@ -584,7 +587,7 @@ cleaned_gss_2018|>
 #| echo: false
 #| warning: false
 #| label: tbl-6
-#| tbl-cap: "Marital Status vs. Self-Ascribed Belonging to Political Parties of 2016 Respondents"
+#| tbl-cap: "2016 Respondent's Marital Status vs. Self-Described Identification with a Political Parties"
 
 cleaned_gss_2016|>
   tabyl(partyid, marital)|>
@@ -604,7 +607,7 @@ cleaned_gss_2016|>
 #| echo: false
 #| warning: false
 #| label: tbl-7
-#| tbl-cap: "Marital Status vs. Self-Ascribed Belonging to Political Parties of 2014 Respondents"
+#| tbl-cap: "2014 Respondent's Marital Status vs. Self-Described Identification with a Political Parties"
 
 cleaned_gss_2014|>
   tabyl(partyid, marital)|>
@@ -705,7 +708,7 @@ polviews_marital_2014 <- ggplot(data=cleaned_gss_2014, aes(x = polviews, fill = 
 #| echo: false
 #| warning: false
 #| label: fig-4
-#| fig-cap: "2014-2021 Comparisons of Birth Cohort Against Respondent Marital Status"
+#| fig-cap: "2014-2021 Comparisons of Self-Described Placement on the Political Spectrum Against Respondent Marital Status"
 #### Using Patchwork Package to Combine four Graphs ####
 (polviews_marital_2021) + (polviews_marital_2018) + (polviews_marital_2016) + (polviews_marital_2014)+ 
   plot_annotation(tag_levels = 'A') +
@@ -808,10 +811,6 @@ cleaned_gss_2014|>
 ## Weaknesses and next steps
 
 Weaknesses and next steps should also be included.
-
-\newpage
-
-\appendix
 
 \newpage
 
