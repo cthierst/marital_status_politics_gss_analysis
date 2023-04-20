@@ -359,9 +359,9 @@ cohort_marital_2014 <- ggplot(data=cleaned_gss_2014, aes(x = cohort, fill = mari
   plot_layout(guides = "collect")
 ```
 
-### Sex and Marital Status
+### Marital Status and Sex
 
-The last points of bias that must be acknowledged is the response rate of females versus males to the GSS and the effect of sex on marital status.
+The last points of bias that must be acknowledged is the response rate of females versus males to the U.S. General Social Survey (GSS) and the effect of sex on marital status. As @fig-2 shows, every sample from the GSS contains more females than males. This is important as women are more likely to identify with the Democratic Party and align more closely to the left of the political spectrum, whereas men are more likely to identify with the Republican Party and align more closely with the right of the spectrum [@citerutgers]. Meaning that responses may lean more to the left of the political spectrum, regardless of marital status.
 
 ```{r}
 #| include: false
