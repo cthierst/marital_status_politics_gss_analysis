@@ -45,13 +45,101 @@ cleaned_gss_2014 <-
   read.csv(here::here("inputs/clean_data/cleaned_gss_2014.csv"))
 ```
 
+```{r}
+#| include: false
+
+#### Ordering ####
+
+cleaned_gss_2021$partyid <- 
+  factor(cleaned_gss_2021$partyid, 
+         levels = c("Strong Democrat", "Not Very Strong Democrat", "Independent (Close to Democrat)", "Independent (Neither)", "Independent (Close to Republican)", "Not Very Strong Republican", "Strong Republican"))
+
+cleaned_gss_2018$partyid <- 
+  factor(cleaned_gss_2018$partyid, 
+         levels = c("Strong Democrat", "Not Very Strong Democrat", "Independent (Close to Democrat)", "Independent (Neither)", "Independent (Close to Republican)", "Not Very Strong Republican", "Strong Republican"))
+
+cleaned_gss_2016$partyid <- 
+  factor(cleaned_gss_2016$partyid, 
+         levels = c("Strong Democrat", "Not Very Strong Democrat", "Independent (Close to Democrat)", "Independent (Neither)", "Independent (Close to Republican)", "Not Very Strong Republican", "Strong Republican"))
+
+cleaned_gss_2014$partyid <- 
+  factor(cleaned_gss_2014$partyid, 
+         levels = c("Strong Democrat", "Not Very Strong Democrat", "Independent (Close to Democrat)", "Independent (Neither)", "Independent (Close to Republican)", "Not Very Strong Republican", "Strong Republican"))
+```
+
+```{r}
+#| include: false
+
+#### Ordering ####
+
+cleaned_gss_2021$marital <- 
+  factor(cleaned_gss_2021$marital, 
+         levels = c("Married", "Never Married", "Separated", "Divorced", "Widowed"))
+
+cleaned_gss_2018$marital <- 
+  factor(cleaned_gss_2018$marital, 
+         levels = c("Married", "Never Married", "Separated", "Divorced", "Widowed"))
+
+cleaned_gss_2016$marital <- 
+  factor(cleaned_gss_2016$marital, 
+         levels = c("Married", "Never Married", "Separated", "Divorced", "Widowed"))
+
+cleaned_gss_2014$marital <- 
+  factor(cleaned_gss_2014$marital, 
+         levels = c("Married", "Never Married", "Separated", "Divorced", "Widowed"))
+```
+
+```{r}
+#| include: false
+
+#### Ordering ####
+
+cleaned_gss_2021$cohort <- 
+  factor(cleaned_gss_2021$cohort, 
+         levels = c("Gen Z", "Millenial", "Gen X", "Boomer", "Post-War"))
+
+cleaned_gss_2018$cohort <- 
+  factor(cleaned_gss_2018$cohort, 
+         levels = c("Gen Z", "Millenial", "Gen X", "Boomer", "Post-War"))
+
+cleaned_gss_2016$cohort <- 
+  factor(cleaned_gss_2016$cohort, 
+         levels = c("Gen Z", "Millenial", "Gen X", "Boomer", "Post-War"))
+
+cleaned_gss_2014$cohort <- 
+  factor(cleaned_gss_2014$cohort, 
+         levels = c("Millenial", "Gen X", "Boomer", "Post-War"))
+```
+
+```{r}
+#| include: false
+
+#### Ordering####
+
+cleaned_gss_2021$polviews <- 
+  factor(cleaned_gss_2021$polviews, 
+         levels = c("Extremely Conservative", "Conservative", "Slightly Conservative", "Moderate", "Slightly Liberal", "Liberal", "Extremely Liberal"))
+
+cleaned_gss_2018$polviews <- 
+  factor(cleaned_gss_2018$polviews, 
+         levels = c("Extremely Conservative", "Conservative", "Slightly Conservative", "Moderate", "Slightly Liberal", "Liberal", "Extremely Liberal"))
+
+cleaned_gss_2016$polviews <- 
+  factor(cleaned_gss_2016$polviews, 
+         levels = c("Extremely Conservative", "Conservative", "Slightly Conservative", "Moderate", "Slightly Liberal", "Liberal", "Extremely Liberal"))
+
+cleaned_gss_2014$polviews <- 
+  factor(cleaned_gss_2014$polviews, 
+         levels = c("Extremely Conservative", "Conservative", "Slightly Conservative", "Moderate", "Slightly Liberal", "Liberal", "Extremely Liberal"))
+```
+
 # Introduction
 
 # Data {#sec-data}
 
 ## Data Management
 
-This paper uses the R statistical programming language [@citeR], along with several packages, tidyverse [@citetidyverse], janitor [@citejanitor], here [@citehere], and [@citedplyr]. All figures in this paper were created using the packages ggplot2 [@citeggplot2] and the tables were created using knitr [@citeknitr] and kableExtra[@citekablextra]. Combinations of figures were created using [@citepatchwork] The color styling of graphs has been created using RColorBrewer \[@citecolorbrewer\]. The model in this paper was created using the rstanarm [@citerstanarm] package.
+This paper uses the R statistical programming language [@citeR], along with several packages, tidyverse [@citetidyverse], janitor [@citejanitor], here [@citehere], and [@citedplyr]. All figures in this paper were created using the packages ggplot2 [@citeggplot2] and the tables were created using knitr [@citeknitr] and kableExtra[@citekablextra]. Combinations of figures were created using [@citepatchwork] The color styling of graphs has been created using RColorBrewer [@citecolorbrewer]. The model in this paper was created using the rstanarm [@citerstanarm] package.
 
 ## Source
 
@@ -120,7 +208,7 @@ variable_table <-
     ),
     "Variable Description" = c(
       "Self-ascribed belonging to the Republican, Democratic, or Indepedent parties",
-    "Self-ascribed placement on a Likert scale from 'extremely liberal to extremely conservative'",
+    "Self-ascribed placement on the political spectrum from 'extremely liberal to extremely conservative'",
     "Marital status of respondent",
     "Self-ascribed sex of respondent",
     "Generational cohort that respondent belongs to "
@@ -180,6 +268,440 @@ variable_measure_table |>
 It is important to acknowledge that observations and data from the 2014, 2016, 2018, and 2021 US General Social Survey (GSS) may have been influenced by social trends occurring in the world around participants. These could include and are not limited to the deaths of Michael Brown and Eric Garner as a result of police brutality in 2014, the presidential election in 2016, the immigration crisis in 2018, and the continuing COVID-19 pandemic in 2021. However, this is in part, part of the importance of the GSS, to track social trends. This is why I have chosen to compare four years of survey results, to gain a better perspective of these social trends with acknowledgement of the global circumstances in which they are reported under.
 
 One point of bias that does need to be addressed is the difference in surveying techniques. The US General Social Survey (GSS) was conducted in person in the years 2014, 2016, and 2018, however, due to the COVID-19 pandemic, it was changed to being an online survey resulting in a higher rate of non-response. The 2021 GSS controlled for this by adjusting population totals to ensure that the weighted totals closely matched the U.S. Census Bureau's estimates of sex, age, education, race, region, and ethnicity [@citegsscodebook]. Additionally, due to the survey being online, household enumeration was impossible, so households were asked to identity the adult with the most recent birthday [@citegsscodebook]. This is problematic as it may have missed some household residents who were temporarily living abroad, adult children, etc. [@citegsscodebook]. Measures were taken to control for this by conducting tests of significant to look for differences in trend estimates [@citegsscodebook]. Additionally, in the years where the survey was conducted in-person, there may have been instances of variance in how interviewers asked questions which could have led to bias in the results.
+
+## Marital Status and Cohort
+
+```{r}
+#| include: false
+#| message: false
+#### Creating Graph ####
+cohort_marital_2021 <- ggplot(data=cleaned_gss_2021, aes(x = cohort, fill = marital)) + #assign ggplot to new variable in order to use patchwork package later
+  geom_bar(width =.8) +
+  theme_classic() + 
+  labs(
+    x = "Birth Cohort",
+    y = "Number of Respondents",
+    fill = "Marital Status",
+    caption = "2021 GSS"
+  ) +
+  scale_fill_brewer(palette="Spectral")+
+  theme(legend.position = "none") + #include legend at bottom to ensure readability when using patchwork package
+  theme(text = element_text(size=6))
+```
+
+```{r}
+#| include: false
+#| message: false
+#### Creating Graph ####
+cohort_marital_2018 <- ggplot(data=cleaned_gss_2018, aes(x = cohort, fill = marital)) + #assign ggplot to new variable in order to use patchwork package later
+  geom_bar(width =.8) +
+  theme_classic() + 
+  labs(
+    x = "Birth Cohort",
+    y = "Number of Respondents ",
+    fill = "Marital Status",
+    caption = "2018 GSS"
+  ) +
+  scale_fill_brewer(palette="Spectral") + 
+  theme(text = element_text(size=6))
+```
+
+```{r}
+#| include: false
+#| message: false
+
+#### Creating Graph####
+cohort_marital_2016 <- ggplot(data=cleaned_gss_2016, aes(x = cohort, fill = marital)) + #assign ggplot to new variable in order to use patchwork package later
+  geom_bar(width =.8) +
+  theme_classic() + 
+  labs(
+    x = "Birth Cohort",
+    y = "Number of Respondents",
+    fill = "Marital Status",
+    caption = "2016 GSS"
+  ) +
+  scale_fill_brewer(palette="Spectral") +
+  theme(legend.position = "none")+
+  theme(text = element_text(size=6))
+```
+
+```{r}
+#| include: false
+#| message: false
+
+#### Creating Graph ####
+cohort_marital_2014 <- ggplot(data=cleaned_gss_2014, aes(x = cohort, fill = marital)) + #assign ggplot to new variable in order to use patchwork package later
+  geom_bar(width =.8) +
+  theme_classic() + 
+  labs(
+    x = "Birth Cohort",
+    y = "Number of Respondents",
+    fill = "Marital Status",
+    caption = "2014 GSS"
+  ) +
+  scale_fill_brewer(palette="Spectral") +
+  theme(legend.position = "none") +
+  theme(text = element_text(size=6))
+```
+
+```{r}
+#| echo: false
+#| warning: false
+#| label: fig-2
+#| fig-cap: "2014-2021 Comparisons of Birth Cohort Against Respondent Marital Status"
+#### Using Patchwork Package to Combine Two Graphs ####
+(cohort_marital_2021) + (cohort_marital_2018) + (cohort_marital_2016) + (cohort_marital_2014) +
+  plot_annotation(tag_levels = 'A') +
+  plot_layout(ncol = 2)+
+  plot_layout(guides = "collect")
+```
+
+## Marital Status and Self-Ascribed Belonging to Political Parties
+
+```{r}
+#| include: false
+#| message: false
+
+#### Creating Graph ####
+partyid_marital_2021 <- ggplot(data=cleaned_gss_2021, aes(x = partyid, fill = marital)) + #assign ggplot to new variable in order to use patchwork package later
+  geom_bar(width =.8) +
+  theme_classic() + 
+  labs(
+    x = "Political Identification",
+    y = "# of Respondents",
+    fill = "Marital Status",
+    caption = "2021 GSS"
+  ) +
+  scale_fill_brewer(palette="Spectral") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  theme(legend.position = "none") +
+  theme(text = element_text(size=6))
+```
+
+```{r}
+#| include: false
+#| message: false
+
+#### Creating Graph ####
+partyid_marital_2018 <- ggplot(data=cleaned_gss_2018, aes(x = partyid, fill = marital)) + #assign ggplot to new variable in order to use patchwork package later
+  geom_bar(width =.8) +
+  theme_classic() + 
+  labs(
+    x = "Political Identification",
+    y = "# of Respondents",
+    fill = "Marital Status",
+    caption = "2018 GSS"
+  ) +
+  scale_fill_brewer(palette="Spectral") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  theme(legend.position = "none") +
+  theme(text = element_text(size=6))
+```
+
+```{r}
+#| include: false
+#| message: false
+
+#### Creating Graph ####
+partyid_marital_2016 <- ggplot(data=cleaned_gss_2016, aes(x = partyid, fill = marital)) + #assign ggplot to new variable in order to use patchwork package later
+  geom_bar(width =.8) +
+  theme_classic() + 
+  labs(
+    x = "Political Identification",
+    y = "# of Respondents",
+    fill = "Marital Status",
+    caption = "2016 GSS"
+  ) +
+  scale_fill_brewer(palette="Spectral") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  theme(legend.position = "none") +
+  theme(text = element_text(size=6))
+```
+
+```{r}
+#| include: false
+#| message: false
+
+#### Creating Graph ####
+partyid_marital_2014 <- ggplot(data=cleaned_gss_2014, aes(x = partyid, fill = marital)) + #assign ggplot to new variable in order to use patchwork package later
+  geom_bar(width =.8) +
+  theme_classic() + 
+  labs(
+    x = "Political Identification",
+    y = "# of Respondents",
+    fill = "Marital Status",
+    caption = "2014 GSS"
+  ) +
+  scale_fill_brewer(palette="Spectral") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  theme(text = element_text(size=6)) 
+```
+
+```{r}
+#| echo: false
+#| warning: false
+#| label: fig-3
+#| fig-cap: "2014-2021 Comparisons of Birth Cohort Against Respondent Marital Status"
+#### Using Patchwork Package to Combine Two Graphs ####
+(partyid_marital_2021) + (partyid_marital_2018) + (partyid_marital_2016) + (partyid_marital_2014)+ 
+  plot_annotation(tag_levels = 'A') +
+  plot_layout(ncol = 2)+
+  plot_layout(guides = "collect")
+```
+
+```{r}
+#| echo: false
+#| warning: false
+#| label: tbl-4
+#| tbl-cap: "Marital Status vs. Self-Ascribed Belonging to Political Parties of 2021 Respondents"
+
+cleaned_gss_2021|>
+  tabyl(partyid, marital)|>
+  kable(col.names = c(
+    "Political Identity",
+    "Married",
+    "Never Married",
+    "Separated",
+    "Divorced",
+    "Widowed"
+    ),
+    booktabs = TRUE,
+    linesep = "")
+
+```
+
+```{r}
+#| echo: false
+#| warning: false
+#| label: tbl-5
+#| tbl-cap: "Marital Status vs. Self-Ascribed Belonging to Political Parties of 2018 Respondents"
+
+cleaned_gss_2018|>
+  tabyl(partyid, marital)|>
+  kable(col.names = c(
+    "Political Identity",
+    "Married",
+    "Never Married",
+    "Separated",
+    "Divorced",
+    "Widowed"
+    ),
+    booktabs = TRUE,
+    linesep = "")
+```
+
+```{r}
+#| echo: false
+#| warning: false
+#| label: tbl-6
+#| tbl-cap: "Marital Status vs. Self-Ascribed Belonging to Political Parties of 2016 Respondents"
+
+cleaned_gss_2016|>
+  tabyl(partyid, marital)|>
+  kable(col.names = c(
+    "Political Identity",
+    "Married",
+    "Never Married",
+    "Separated",
+    "Divorced",
+    "Widowed"
+    ),
+    booktabs = TRUE,
+    linesep = "")
+```
+
+```{r}
+#| echo: false
+#| warning: false
+#| label: tbl-7
+#| tbl-cap: "Marital Status vs. Self-Ascribed Belonging to Political Parties of 2014 Respondents"
+
+cleaned_gss_2014|>
+  tabyl(partyid, marital)|>
+  kable(col.names = c(
+    "Political Identity",
+    "Married",
+    "Never Married",
+    "Separated",
+    "Divorced",
+    "Widowed"
+    ),
+    booktabs = TRUE,
+    linesep = "")
+```
+
+## Marital Status and Self-Ascribed Placement on Political Spectrum
+
+```{r}
+#| include: false
+#| message: false
+
+#### Creating Graph ####
+polviews_marital_2021 <- ggplot(data=cleaned_gss_2021, aes(x = polviews, fill = marital)) + #assign ggplot to new variable in order to use patchwork package later
+  geom_bar(width =.8) +
+  theme_classic() + 
+  labs(
+    x = "Political View",
+    y = "# of Respondents",
+    fill = "Marital Status",
+    caption = "2021 GSS"
+  ) +
+  scale_fill_brewer(palette="Spectral") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  theme(legend.position = "none") +
+  theme(text = element_text(size=6))
+```
+
+```{r}
+#| include: false
+#| message: false
+
+#### Creating Graph ####
+polviews_marital_2018 <- ggplot(data=cleaned_gss_2018, aes(x = polviews, fill = marital)) + #assign ggplot to new variable in order to use patchwork package later
+  geom_bar(width =.8) +
+  theme_classic() + 
+  labs(
+    x = "Political View",
+    y = "# of Respondents",
+    fill = "Marital Status",
+    caption = "2018 GSS"
+  ) +
+  scale_fill_brewer(palette="Spectral") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  theme(legend.position = "none") +
+  theme(text = element_text(size=6))
+```
+
+```{r}
+#| include: false
+#| message: false
+
+#### Creating Graph ####
+polviews_marital_2016 <- ggplot(data=cleaned_gss_2016, aes(x = polviews, fill = marital)) + #assign ggplot to new variable in order to use patchwork package later
+  geom_bar(width =.8) +
+  theme_classic() + 
+  labs(
+    x = "Political View",
+    y = "# of Respondents",
+    fill = "Marital Status",
+    caption = "2016 GSS"
+  ) +
+  scale_fill_brewer(palette="Spectral") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  theme(legend.position = "none") +
+  theme(text = element_text(size=6))
+```
+
+```{r}
+#| include: false
+#| message: false
+
+#### Creating Graph ####
+polviews_marital_2014 <- ggplot(data=cleaned_gss_2014, aes(x = polviews, fill = marital)) + #assign ggplot to new variable in order to use patchwork package later
+  geom_bar(width =.8) +
+  theme_classic() + 
+  labs(
+    x = "Political View",
+    y = "# of Respondents",
+    fill = "Marital Status",
+    caption = "2014 GSS"
+  ) +
+  scale_fill_brewer(palette="Spectral") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  theme(text = element_text(size=6))
+```
+
+```{r}
+#| echo: false
+#| warning: false
+#| label: fig-4
+#| fig-cap: "2014-2021 Comparisons of Birth Cohort Against Respondent Marital Status"
+#### Using Patchwork Package to Combine Two Graphs ####
+(polviews_marital_2021) + (polviews_marital_2018) + (polviews_marital_2016) + (polviews_marital_2014)+ 
+  plot_annotation(tag_levels = 'A') +
+  plot_layout(ncol = 2)+
+  plot_layout(guides = "collect")
+```
+
+```{r}
+#| echo: false
+#| warning: false
+#| label: tbl-8
+#| tbl-cap: "Marital Status vs. Self-Ascribed Belonging to Political Parties of 2014 Respondents"
+
+cleaned_gss_2021|>
+  tabyl(partyid, marital)|>
+  kable(col.names = c(
+    "Political Identity",
+    "Married",
+    "Never Married",
+    "Separated",
+    "Divorced",
+    "Widowed"
+    ),
+    booktabs = TRUE,
+    linesep = "")
+```
+
+```{r}
+#| echo: false
+#| warning: false
+#| label: tbl-9
+#| tbl-cap: "Marital Status vs. Self-Ascribed Belonging to Political Parties of 2014 Respondents"
+
+cleaned_gss_2018|>
+  tabyl(partyid, marital)|>
+  kable(col.names = c(
+    "Political Identity",
+    "Married",
+    "Never Married",
+    "Separated",
+    "Divorced",
+    "Widowed"
+    ),
+    booktabs = TRUE,
+    linesep = "")
+```
+
+```{r}
+#| echo: false
+#| warning: false
+#| label: tbl-10
+#| tbl-cap: "Marital Status vs. Self-Ascribed Belonging to Political Parties of 2014 Respondents"
+
+cleaned_gss_2016|>
+  tabyl(partyid, marital)|>
+  kable(col.names = c(
+    "Political Identity",
+    "Married",
+    "Never Married",
+    "Separated",
+    "Divorced",
+    "Widowed"
+    ),
+    booktabs = TRUE,
+    linesep = "")
+```
+
+```{r}
+#| echo: false
+#| warning: false
+#| label: tbl-11
+#| tbl-cap: "Marital Status vs. Self-Ascribed Belonging to Political Parties of 2014 Respondents"
+
+cleaned_gss_2014|>
+  tabyl(partyid, marital)|>
+  kable(col.names = c(
+    "Political Identity",
+    "Married",
+    "Never Married",
+    "Separated",
+    "Divorced",
+    "Widowed"
+    ),
+    booktabs = TRUE,
+    linesep = "")
+```
 
 # Model
 
@@ -242,14 +764,6 @@ modelsummary::modelsummary(
 ```
 
 # Discussion
-
-## First discussion point {#sec-first-point}
-
-If my paper were 10 pages, then should be be at least 2.5 pages. The discussion is a chance to show off what you know and what you learnt from all this.
-
-## Second discussion point
-
-## Third discussion point
 
 ## Weaknesses and next steps
 
