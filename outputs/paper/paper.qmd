@@ -1,9 +1,9 @@
 ---
-title: "gss marriage politics analysis"
-subtitle: "subtitle"
+title: "Democratic Marriage Rates on the Rise: Catching Up with Republicans in the U.S."
+subtitle: "An Analysis of the 2014-2021 U.S. General Social Survey Data"
 author: 
   - Chloe Thierstein
-thanks: "Code and data are available at: https://github.com/cthierst/marital_status_political_affiliation_gss_analysis.git"
+thanks: "Code and data are available at: https://github.com/cthierst/marital_status_politics_gss_analysis.git"
 date: "April 20, 2023"
 date-format: "D MMMM YYYY"
 abstract: "First sentence. Second sentence. Third sentence. Fourth sentence."
@@ -117,19 +117,22 @@ cleaned_gss_2014$cohort <-
 
 cleaned_gss_2021$polviews <- 
   factor(cleaned_gss_2021$polviews, 
-         levels = c("Extremely Conservative", "Conservative", "Slightly Conservative", "Moderate", "Slightly Liberal", "Liberal", "Extremely Liberal"))
+         levels = c("Extremely Liberal", "Liberal", "Slightly Liberal",  "Moderate",  "Slightly Conservative","Conservative", "Extremely Conservative"))
 
 cleaned_gss_2018$polviews <- 
   factor(cleaned_gss_2018$polviews, 
-         levels = c("Extremely Conservative", "Conservative", "Slightly Conservative", "Moderate", "Slightly Liberal", "Liberal", "Extremely Liberal"))
+         levels = c("Extremely Liberal", "Liberal", "Slightly Liberal",  "Moderate",  "Slightly Conservative","Conservative", "Extremely Conservative"))
+
 
 cleaned_gss_2016$polviews <- 
   factor(cleaned_gss_2016$polviews, 
-         levels = c("Extremely Conservative", "Conservative", "Slightly Conservative", "Moderate", "Slightly Liberal", "Liberal", "Extremely Liberal"))
+         levels = c("Extremely Liberal", "Liberal", "Slightly Liberal",  "Moderate",  "Slightly Conservative","Conservative", "Extremely Conservative"))
+
 
 cleaned_gss_2014$polviews <- 
   factor(cleaned_gss_2014$polviews, 
-         levels = c("Extremely Conservative", "Conservative", "Slightly Conservative", "Moderate", "Slightly Liberal", "Liberal", "Extremely Liberal"))
+         levels = c("Extremely Liberal", "Liberal", "Slightly Liberal",  "Moderate",  "Slightly Conservative","Conservative", "Extremely Conservative"))
+
 ```
 
 # Introduction
