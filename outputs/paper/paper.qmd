@@ -1,5 +1,5 @@
 ---
-title: "Democratic Marriage Rates on the Rise: Catching Up with Republicans in the U.S."
+title: "Democratic Marriage Rates on the Rise: Catching Up With Republicans"
 subtitle: "An Analysis of the 2014-2021 U.S. General Social Survey Data"
 author: 
   - Chloe Thierstein
@@ -192,7 +192,7 @@ variable_table |>
 
 ## Key Features
 
-This paper explores the estimands, does political affiliation as measured through political views and identification impact marital status' and what influence does generational cohort and sex have. This paper explores these estimands through an analysis of the sample populations described in @tbl-1 under "Total \# of Responses Used in Analysis." Responses were removed to account for unanswered or not applicable responses. I did this to ensure the representative and completeness of all variables analyzed. The variables selected for analysis can be viewed in @tbl-2 and their measurement levels can be viewed in @tbl-3. Responses were measured using Likert scales which measure respondents' opinions to questions, and multiple choice questions.
+This paper explores the estimands, does political affiliation as measured through political views and identification impact marital status' and what influence does generational cohort and sex have. This paper explores these estimands through an analysis of the sample populations described in @tbl-1 under "Total \# of Responses Used in Analysis." Responses were removed to account for unanswered or not applicable responses. I did this to ensure the representative and completeness of all variables analyzed. Additionally, in the data cleaning process, the cohort variable was manipulated to combine respondent's birth years into their generational cohort for more coherent analysis. The variables selected for analysis can be viewed in @tbl-2 and their measurement levels can be viewed in @tbl-3. Responses were measured using Likert scales which measure respondents' opinions to questions, and multiple choice questions.
 
 ```{r}
 #| include: false
@@ -354,7 +354,7 @@ cohort_marital_2014 <- ggplot(data=cleaned_gss_2014, aes(x = cohort, fill = mari
 #| echo: false
 #| warning: false
 #| label: fig-1
-#| fig-cap: "2014-2021 Comparisons of Generational Cohort Against Respondent Marital Status"
+#| fig-cap: "2014-2021 Comparison of Respondent's Generational Cohort Against Marital Status"
 #### Using Patchwork Package to Combine four Graphs ####
 (cohort_marital_2021) + (cohort_marital_2018) + (cohort_marital_2016) + (cohort_marital_2014) +
   plot_annotation(tag_levels = 'A') +
@@ -443,7 +443,7 @@ sex_marital_2014 <- ggplot(data=cleaned_gss_2014, aes(x = sex, fill = marital)) 
 #| echo: false
 #| warning: false
 #| label: fig-2
-#| fig-cap: "2014-2021 Comparisons of Respondent's Sex Against Marital Status"
+#| fig-cap: "2014-2021 Comparison of Respondent's Sex Against Marital Status"
 #### Using Patchwork Package to Combine four Graphs ####
 (sex_marital_2021) + (sex_marital_2018) + (sex_marital_2016) + (sex_marital_2014) +
   plot_annotation(tag_levels = 'A') +
@@ -451,13 +451,13 @@ sex_marital_2014 <- ggplot(data=cleaned_gss_2014, aes(x = sex, fill = marital)) 
   plot_layout(guides = "collect")
 ```
 
-## Marital Status and Self-Described Belonging to Political Parties
+## Marital Status and Self-Described Identification With a Political Party
 
 ```{r}
 #| include: false
 #| message: false
 
-#### Creating Graph for comparison 2021 respondent's political party identity against marital status ####
+#### Creating Graph for comparison 2021 respondent's identification with a political party against marital status ####
 partyid_marital_2021 <- ggplot(data=cleaned_gss_2021, aes(x = partyid, fill = marital)) + #assign ggplot to new variable in order to use patchwork package later
   geom_bar(width =.8) +
   theme_classic() + 
@@ -476,7 +476,7 @@ partyid_marital_2021 <- ggplot(data=cleaned_gss_2021, aes(x = partyid, fill = ma
 ```{r}
 #| include: false
 #| message: false
-#### Creating Graph for comparison 2018 respondent's political party identity against marital status ####
+#### Creating Graph for comparison 2018 respondent's identification with a political party against marital status ####
 partyid_marital_2018 <- ggplot(data=cleaned_gss_2018, aes(x = partyid, fill = marital)) + #assign ggplot to new variable in order to use patchwork package later
   geom_bar(width =.8) +
   theme_classic() + 
@@ -496,7 +496,7 @@ partyid_marital_2018 <- ggplot(data=cleaned_gss_2018, aes(x = partyid, fill = ma
 #| include: false
 #| message: false
 
-#### Creating Graph for comparison 2016 respondent's political party identity against marital status ####
+#### Creating Graph for comparison 2016 respondent's identification with a political party against marital status ####
 partyid_marital_2016 <- ggplot(data=cleaned_gss_2016, aes(x = partyid, fill = marital)) + #assign ggplot to new variable in order to use patchwork package later
   geom_bar(width =.8) +
   theme_classic() + 
@@ -516,7 +516,7 @@ partyid_marital_2016 <- ggplot(data=cleaned_gss_2016, aes(x = partyid, fill = ma
 #| include: false
 #| message: false
 
-#### Creating Graph for comparison 2014 respondent's political party identity against marital status ####
+#### Creating Graph for comparison 2014 respondent's identification with a political party against marital status ####
 partyid_marital_2014 <- ggplot(data=cleaned_gss_2014, aes(x = partyid, fill = marital)) + #assign ggplot to new variable in order to use patchwork package later
   geom_bar(width =.8) +
   theme_classic() + 
@@ -531,25 +531,28 @@ partyid_marital_2014 <- ggplot(data=cleaned_gss_2014, aes(x = partyid, fill = ma
   theme(text = element_text(size=6)) 
 ```
 
+When looking at @fig-3, we can see that depending on the year, there are large variations in how respondent's choose to identify with the political parties in the United States. When comparing 2014 to 2021 in @fig-3, we can observe that in this period, respondent's have become more likely to make a "strong" choice in what political party they identify with as there was a more even distribution of responses in the years prior to 2021. Additionally, we can observe that those identifying with the Republican Party, indicating as "Strong Republican" and "Not Very Strong Republican", have maintained strong marriage rates in each year when compared to other marital statuses. This is in contrast to those identifying with the Democratic Party, indicating as "Strong Democrat" and "Not Very Strong Democrat" as their marriage rates seem to be less stable, increasing and decreasing based on the year, with the most significant increase occurring in 2021.
+
 ```{r}
 #| echo: false
 #| warning: false
 #| label: fig-3
-#| fig-cap: "2014-2021 Comparisons Respondent's Marital Status vs. Identification with a Political Party"
+#| fig-cap: "2014-2021 Comparison of Respondent's Self-Described Identification With a Political Party Against Marital Status"
 
-
-#### Using Patchwork Package to Combine Two Graphs ####
+#### Using Patchwork Package to Combine Four Graphs ####
 (partyid_marital_2021) + (partyid_marital_2018) + (partyid_marital_2016) + (partyid_marital_2014)+ 
   plot_annotation(tag_levels = 'A') +
   plot_layout(ncol = 2)+
   plot_layout(guides = "collect")
 ```
 
+Looking at @tbl-4
+
 ```{r}
 #| echo: false
 #| warning: false
 #| label: tbl-4
-#| tbl-cap: "2021 Respondent's Marital Status vs. Self-Described Identification with a Political Parties"
+#| tbl-cap: "2021 Respondent's Marital Status vs. Self-Described Identification with a Political Party"
 
 cleaned_gss_2021|>
   tabyl(partyid, marital)|>
@@ -570,7 +573,7 @@ cleaned_gss_2021|>
 #| echo: false
 #| warning: false
 #| label: tbl-5
-#| tbl-cap: "2018 Respondent's Marital Status vs. Self-Described Identification with a Political Parties"
+#| tbl-cap: "2018 Respondent's Marital Status vs. Self-Described Identification with a Political Party"
 
 cleaned_gss_2018|>
   tabyl(partyid, marital)|>
@@ -590,7 +593,7 @@ cleaned_gss_2018|>
 #| echo: false
 #| warning: false
 #| label: tbl-6
-#| tbl-cap: "2016 Respondent's Marital Status vs. Self-Described Identification with a Political Parties"
+#| tbl-cap: "2016 Respondent's Marital Status vs. Self-Described Identification with a Political Party"
 
 cleaned_gss_2016|>
   tabyl(partyid, marital)|>
@@ -610,7 +613,7 @@ cleaned_gss_2016|>
 #| echo: false
 #| warning: false
 #| label: tbl-7
-#| tbl-cap: "2014 Respondent's Marital Status vs. Self-Described Identification with a Political Parties"
+#| tbl-cap: "2014 Respondent's Marital Status vs. Self-Described Identification with a Political Party"
 
 cleaned_gss_2014|>
   tabyl(partyid, marital)|>
@@ -626,13 +629,13 @@ cleaned_gss_2014|>
     linesep = "")
 ```
 
-## Marital Status and Self-Ascribed Placement on Political Spectrum
+## Marital Status and Self-Described Placement on the Political Spectrum
 
 ```{r}
 #| include: false
 #| message: false
 
-#### Creating Graph for comparison 2021 respondent's political spectrum identity against marital status ####
+#### Creating Graph for comparison 2021 respondent's self-described placement on the  political spectrum against marital status ####
 polviews_marital_2021 <- ggplot(data=cleaned_gss_2021, aes(x = polviews, fill = marital)) + #assign ggplot to new variable in order to use patchwork package later
   geom_bar(width =.8) +
   theme_classic() + 
@@ -652,7 +655,7 @@ polviews_marital_2021 <- ggplot(data=cleaned_gss_2021, aes(x = polviews, fill = 
 #| include: false
 #| message: false
 
-#### Creating Graph for comparison 2018 respondent's political spectrum identity against marital status ####
+#### Creating Graph for comparison 2018 respondent's self-described placement on the  political spectrum against marital status ####
 polviews_marital_2018 <- ggplot(data=cleaned_gss_2018, aes(x = polviews, fill = marital)) + #assign ggplot to new variable in order to use patchwork package later
   geom_bar(width =.8) +
   theme_classic() + 
@@ -672,7 +675,7 @@ polviews_marital_2018 <- ggplot(data=cleaned_gss_2018, aes(x = polviews, fill = 
 #| include: false
 #| message: false
 
-#### Creating Graph for comparison 2016 respondent's political spectrum identity against marital status ####
+#### Creating Graph for comparison 2016 respondent's self-described placement on the  political spectrum against marital status ####
 polviews_marital_2016 <- ggplot(data=cleaned_gss_2016, aes(x = polviews, fill = marital)) + #assign ggplot to new variable in order to use patchwork package later
   geom_bar(width =.8) +
   theme_classic() + 
@@ -692,7 +695,7 @@ polviews_marital_2016 <- ggplot(data=cleaned_gss_2016, aes(x = polviews, fill = 
 #| include: false
 #| message: false
 
-#### Creating Graph for comparison 2024 respondent's political spectrum identity against marital status ####
+#### Creating Graph for comparison 2014 respondent's self-described placement on the  political spectrum against marital status ####
 polviews_marital_2014 <- ggplot(data=cleaned_gss_2014, aes(x = polviews, fill = marital)) + #assign ggplot to new variable in order to use patchwork package later
   geom_bar(width =.8) +
   theme_classic() + 
@@ -711,8 +714,9 @@ polviews_marital_2014 <- ggplot(data=cleaned_gss_2014, aes(x = polviews, fill = 
 #| echo: false
 #| warning: false
 #| label: fig-4
-#| fig-cap: "2014-2021 Comparisons of Self-Described Placement on the Political Spectrum Against Respondent Marital Status"
-#### Using Patchwork Package to Combine four Graphs ####
+#| fig-cap: "2014-2021 Comparison of Respondent's Self-Described Placement on the Political Spectrum Against Respondent Marital Status"
+
+#### Using Patchwork Package to Combine Four Graphs ####
 (polviews_marital_2021) + (polviews_marital_2018) + (polviews_marital_2016) + (polviews_marital_2014)+ 
   plot_annotation(tag_levels = 'A') +
   plot_layout(ncol = 2)+
@@ -723,7 +727,7 @@ polviews_marital_2014 <- ggplot(data=cleaned_gss_2014, aes(x = polviews, fill = 
 #| echo: false
 #| warning: false
 #| label: tbl-8
-#| tbl-cap: "Marital Status vs. Self-Ascribed Placement on Political of 2014 Respondents"
+#| tbl-cap: "Marital Status vs. Self-Described Placement on the Political Spectrum Against Respondent Marital Status"
 
 #### Creating Table for comparison 2021 respondent's political spectrum identity against marital status ####
 
@@ -745,7 +749,7 @@ cleaned_gss_2021|>
 #| echo: false
 #| warning: false
 #| label: tbl-9
-#| tbl-cap: "Marital Status vs. Self-Ascribed Placement on Political of 2018 Respondents"
+#| tbl-cap: "Marital Status vs. Self-Described Placement on the Political Spectrum Against Respondent Marital Status"
 
 #### Creating Table for comparison 2021 respondent's political spectrum identity against marital status ####
 
@@ -767,7 +771,7 @@ cleaned_gss_2018|>
 #| echo: false
 #| warning: false
 #| label: tbl-10
-#| tbl-cap: "Marital Status vs. Self-Ascribed Placement on Political of 2016 Respondents"
+#| tbl-cap: "Marital Status vs. Self-Described Placement the Political Spectrum Against Respondent Marital Status"
 
 #### Creating Table for comparison 2021 respondent's political spectrum identity against marital status ####
 
@@ -789,7 +793,7 @@ cleaned_gss_2016|>
 #| echo: false
 #| warning: false
 #| label: tbl-11
-#| tbl-cap: "Marital Status vs. Self-Ascribed Placement on Political of 2014 Respondents"
+#| tbl-cap: "Marital Status vs. Self-Described Placement the Political Spectrum Against Respondent Marital Status"
 
 #### Creating Table for comparison 2021 respondent's political spectrum identity against marital status ####
 
@@ -811,9 +815,13 @@ cleaned_gss_2014|>
 
 # Discussion
 
-## Weaknesses and next steps
+## Limitations and Weaknesses
 
-Weaknesses and next steps should also be included.
+One weakness of this paper that must be acknowledged is the reliance of this analysis falling on the U.S. General Social Survey (GSS). This is a weakness as the respondent's chosen to participate in this survey change each year of the survey, making it difficult to track true marital status, and changes in individual's political identification. Additionally, due to the changes in how the GSS has been distributed over the four years analyzed in this paper, there may be missed dynamism and bias in the responses, reporting and recording of data. Additionally, no survey is perfect and response bias remains a high possibility within such large data collection samples. Additionally, the GSS does not report on sexual identity which is important to note as same-sex unions were not legalized throughout the United States until 2015, meaning that many respondent's may not have had the ability to marry in 2014 and years earlier. This could have resulted in the data being skewed towards Republicans having higher rates of marriages, despite rates of common-law marriages being perhaps equal in scale.
+
+# Future Research
+
+More research on this topic should be conducted as it helps us gain a more meaningful understanding of how political identification in the United States may influence marital status. Further research into this topic should explore in-depth, questions about cohort, sex, gender-identity, and sexual preferences to gain a better understanding of American demographics. This future research will substantially influence demographic studies and American understanding of themselves.
 
 \newpage
 
