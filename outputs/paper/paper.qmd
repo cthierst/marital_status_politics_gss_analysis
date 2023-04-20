@@ -546,7 +546,7 @@ When looking at @fig-3, we can see that depending on the year, there are large v
   plot_layout(guides = "collect")
 ```
 
-Looking at @tbl-4
+Looking at @tbl-4, @tbl-5, @tbl-6, and @tbl-7, we can see that
 
 ```{r}
 #| echo: false
@@ -815,13 +815,17 @@ cleaned_gss_2014|>
 
 # Discussion
 
-## Limitations and Weaknesses
+# Limitations and Weaknesses
 
 One weakness of this paper that must be acknowledged is the reliance of this analysis falling on the U.S. General Social Survey (GSS). This is a weakness as the respondent's chosen to participate in this survey change each year of the survey, making it difficult to track true marital status, and changes in individual's political identification. Additionally, due to the changes in how the GSS has been distributed over the four years analyzed in this paper, there may be missed dynamism and bias in the responses, reporting and recording of data. Additionally, no survey is perfect and response bias remains a high possibility within such large data collection samples. Additionally, the GSS does not report on sexual identity which is important to note as same-sex unions were not legalized throughout the United States until 2015, meaning that many respondent's may not have had the ability to marry in 2014 and years earlier. This could have resulted in the data being skewed towards Republicans having higher rates of marriages, despite rates of common-law marriages being perhaps equal in scale.
 
 # Future Research
 
 More research on this topic should be conducted as it helps us gain a more meaningful understanding of how political identification in the United States may influence marital status. Further research into this topic should explore in-depth, questions about cohort, sex, gender-identity, and sexual preferences to gain a better understanding of American demographics. This future research will substantially influence demographic studies and American understanding of themselves.
+
+# Acknowledgements 
+
+I would like to extend a special thanks to Myra Li, Justin Abando, Thi Hong An Nguyen, Rohan Alexander, and Sofia Sellitto for peer reviewing my work and providing valuable feedback and suggestions.
 
 \newpage
 
