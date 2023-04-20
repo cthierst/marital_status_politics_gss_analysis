@@ -29,7 +29,6 @@ library(RColorBrewer)
 library(kableExtra)
 library(patchwork)
 library(readr)
-library(here)
 
 #### Import cleaned_gss_2021.csv ####
 cleaned_gss_2021 <-
@@ -139,7 +138,7 @@ cleaned_gss_2014$polviews <-
 
 ## Data Management
 
-This paper uses the R statistical programming language [@citeR], along with several packages, tidyverse [@citetidyverse], janitor [@citejanitor], here [@citehere], and [@citedplyr]. All figures in this paper were created using the packages ggplot2 [@citeggplot2] and the tables were created using knitr [@citeknitr] and kableExtra[@citekablextra]. Combinations of figures were created using [@citepatchwork] The color styling of graphs has been created using RColorBrewer [@citecolorbrewer]. The model in this paper was created using the rstanarm [@citerstanarm] package.
+This paper uses the R statistical programming language [@citeR], along with several packages, tidyverse [@citetidyverse], janitor [@citejanitor], here [@citehere], and [@citedplyr]. All figures in this paper were created using the packages ggplot2 [@citeggplot2] and the tables were created using knitr [@citeknitr] and kableExtra[@citekablextra]. Combinations of figures were created using [@citepatchwork] The color styling of graphs has been created using RColorBrewer [@citecolorbrewer].
 
 ## Source
 
@@ -265,11 +264,15 @@ variable_measure_table |>
 
 ## Bias and Ethics
 
-It is important to acknowledge that observations and data from the 2014, 2016, 2018, and 2021 US General Social Survey (GSS) may have been influenced by social trends occurring in the world around participants. These could include and are not limited to the deaths of Michael Brown and Eric Garner as a result of police brutality in 2014, the presidential election in 2016, the immigration crisis in 2018, and the continuing COVID-19 pandemic in 2021. However, this is in part, part of the importance of the GSS, to track social trends. This is why I have chosen to compare four years of survey results, to gain a better perspective of these social trends with acknowledgement of the global circumstances in which they are reported under.
+### General Social Survey
+
+It is important to acknowledge that observations and data from the 2014, 2016, 2018, and 2021 US General Social Survey (GSS) may have been influenced by social trends occurring in the world around participants. These could include and are not limited to the deaths of Michael Brown and Eric Garner as a result of police brutality in 2014, the presidential election in 2016, the immigration crisis in 2018, and the continuing COVID-19 pandemic in 2021. However, this is in part, part of the importance of the GSS, to track social trends. This is why I have chosen to compare four years of survey results, to gain a better perspective of these social trends with acknowledgement of the global circumstances in which they are reported under. Although it is important to note that these cannot be direct comparison as the number of those surveyed is different between years as can be seen in @tbl-1
 
 One point of bias that does need to be addressed is the difference in surveying techniques. The US General Social Survey (GSS) was conducted in person in the years 2014, 2016, and 2018, however, due to the COVID-19 pandemic, it was changed to being an online survey resulting in a higher rate of non-response. The 2021 GSS controlled for this by adjusting population totals to ensure that the weighted totals closely matched the U.S. Census Bureau's estimates of sex, age, education, race, region, and ethnicity [@citegsscodebook]. Additionally, due to the survey being online, household enumeration was impossible, so households were asked to identity the adult with the most recent birthday [@citegsscodebook]. This is problematic as it may have missed some household residents who were temporarily living abroad, adult children, etc. [@citegsscodebook]. Measures were taken to control for this by conducting tests of significant to look for differences in trend estimates [@citegsscodebook]. Additionally, in the years where the survey was conducted in-person, there may have been instances of variance in how interviewers asked questions which could have led to bias in the results.
 
-## Marital Status and Cohort
+### Marital Status and Birth Cohort
+
+Another important point of bias to acknowledge is the effect of birth cohort on marital status. As can be seen in @fig-1, the effects of age on birth cohorts largely impacts the marital status. For example, in 2014, there are significantly more respondent's belonging to the "Post-War" cohort and no respondent's belonging to the "Gen Z" cohort. This is influential as the 2014 data is missing marital rates from the "Gen Z" cohort as they were not old enough to be surveyed, thereby distorting marital rates in that year when compared to the follow three years. Additionally, due to the young age of "Gen Z", respondents many have not reached the age where they are looking for long-term relationships resulting in very few being married and even less being divorced and widowed, as shown in @fig-1. However, it is important to include them in this analysis as they are a growing and extremely relevant cohort in demographic studies. Additionally, it is noticeable that trends in marriage between birth cohorts are shifting as can be seen by the increase of "Never Married" respondents between cohorts each year. This is significant as it may act as a co-indicator of marital rates in the U.S.
 
 ```{r}
 #| include: false
@@ -285,6 +288,7 @@ cohort_marital_2021 <- ggplot(data=cleaned_gss_2021, aes(x = cohort, fill = mari
     caption = "2021 GSS"
   ) +
   scale_fill_brewer(palette="Spectral") + 
+  theme(legend.position = "none")+
   theme(text = element_text(size=6))
 ```
 
@@ -346,10 +350,98 @@ cohort_marital_2014 <- ggplot(data=cleaned_gss_2014, aes(x = cohort, fill = mari
 ```{r}
 #| echo: false
 #| warning: false
-#| label: fig-2
+#| label: fig-1
 #| fig-cap: "2014-2021 Comparisons of Birth Cohort Against Respondent Marital Status"
 #### Using Patchwork Package to Combine Two Graphs ####
 (cohort_marital_2021) + (cohort_marital_2018) + (cohort_marital_2016) + (cohort_marital_2014) +
+  plot_annotation(tag_levels = 'A') +
+  plot_layout(ncol = 2)+
+  plot_layout(guides = "collect")
+```
+
+### Sex and Marital Status
+
+The last points of bias that must be acknowledged is the response rate of females versus males to the GSS and the effect of sex on marital status.
+
+```{r}
+#| include: false
+#| message: false
+#### Creating Graph for comparison 2021 respondent's sex against marital status ####
+sex_marital_2021 <- ggplot(data=cleaned_gss_2021, aes(x = sex, fill = marital)) + #assign ggplot to new variable in order to use patchwork package later
+  geom_bar(width =.8) +
+  theme_classic() + 
+  labs(
+    x = "Sex",
+    y = "# of Respondents ",
+    fill = "Marital Status",
+    caption = "2021 GSS"
+  ) +
+  scale_fill_brewer(palette="Spectral") + 
+  theme(text = element_text(size=6))
+```
+
+```{r}
+#| include: false
+#| message: false
+#| 
+#### Creating Graph for comparison 2018 respondent's sex against marital status ####
+sex_marital_2018 <- ggplot(data=cleaned_gss_2018, aes(x = sex, fill = marital)) + #assign ggplot to new variable in order to use patchwork package later
+  geom_bar(width =.8) +
+  theme_classic() + 
+  labs(
+    x = "Sex",
+    y = "# of Respondents ",
+    fill = "Marital Status",
+    caption = "2021 GSS"
+  ) +
+  scale_fill_brewer(palette="Spectral") + 
+  theme(legend.position = "none")+
+  theme(text = element_text(size=6))
+```
+
+```{r}
+#| include: false
+#| message: false
+#### Creating Graph for comparison 2016 respondent's sex against marital status ####
+sex_marital_2016 <- ggplot(data=cleaned_gss_2016, aes(x = sex, fill = marital)) + #assign ggplot to new variable in order to use patchwork package later
+  geom_bar(width =.8) +
+  theme_classic() + 
+  labs(
+    x = "Sex",
+    y = "# of Respondents ",
+    fill = "Marital Status",
+    caption = "2021 GSS"
+  ) +
+  scale_fill_brewer(palette="Spectral") + 
+  theme(legend.position = "none")+
+  theme(text = element_text(size=6))
+```
+
+```{r}
+#| include: false
+#| message: false
+#### Creating Graph for comparison 2014 respondent's sex against marital status ####
+sex_marital_2014 <- ggplot(data=cleaned_gss_2014, aes(x = sex, fill = marital)) + #assign ggplot to new variable in order to use patchwork package later
+  geom_bar(width =.8) +
+  theme_classic() + 
+  labs(
+    x = "Sex",
+    y = "# of Respondents ",
+    fill = "Marital Status",
+    caption = "2021 GSS"
+  ) +
+  scale_fill_brewer(palette="Spectral") + 
+  theme(legend.position = "none")+
+  theme(text = element_text(size=6))
+```
+
+```{r}
+#| echo: false
+#| warning: false
+#| label: fig-2
+#| fig-cap: "2014-2021 Comparisons of Respondent's Sex Against Marital Status"
+#### Using Patchwork Package to Combine Two Graphs ####
+(sex_marital_2021) + (sex_marital_2018) + (sex_marital_2016) + (sex_marital_2014) +
   plot_annotation(tag_levels = 'A') +
   plot_layout(ncol = 2)+
   plot_layout(guides = "collect")
@@ -709,70 +801,7 @@ cleaned_gss_2014|>
     linesep = "")
 ```
 
-# Model
-
-In this section I briefly describe the **(model(?))** used to investigate the relationship between Political Identity and Marital Status.
-
-## Model set-up
-
-$$\hat{y} = \beta_0 + \beta_1$$ 
-$\hat{y}$ is marital status 
-$\beta_0$ is the political party identity 
-$\beta_1$ is the placement on the political spectrum.
-
-\--
-
-Define $y_i$ as the number of seconds that the plane remained aloft. Then $\beta_i$ is the wing width and $\gamma_i$ is the wing length, both measured in millimeters.
-
-```{=tex}
-\begin{align} 
-y_i|\mu_i, \sigma &\sim \mbox{Normal}(\mu_i, \sigma) \\
-\mu_i &= \alpha + \beta_i + \gamma_i\\
-\alpha &\sim \mbox{Normal}(0, 2.5) \\
-\beta &\sim \mbox{Normal}(0, 2.5) \\
-\gamma &\sim \mbox{Normal}(0, 2.5) \\
-\sigma &\sim \mbox{Exponential}(1)
-\end{align}
-```
-We run the model in R [@citeR] using the `rstanarm` package of [@citerstanarm]. We use the default priors from `rstanarm`.
-
-### Model justification
-
-We expect a positive relationship between the size of the wings and time spent aloft. In particular...
-
-We can use maths by including latex between dollar signs, for instance $\theta$.
-
 # Results
-
-Our results are summarized in @tbl-modelresults.
-
-```{r}
-#| echo: false
-#| eval: true
-#| warning: false
-#| message: false
-
-library(rstanarm)
-
-first_model <-
-  readRDS(file = here::here("outputs/models/first_model.rds"))
-```
-
-```{r}
-#| echo: false
-#| eval: true
-#| label: tbl-modelresults
-#| tbl-cap: "Explanatory models of flight time based on wing width and wing length"
-#| warning: false
-
-modelsummary::modelsummary(
-  list(
-    "First model" = first_model
-  ),
-  statistic = "mad",
-  fmt = 2
-)
-```
 
 # Discussion
 
