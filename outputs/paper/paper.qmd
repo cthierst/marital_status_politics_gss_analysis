@@ -177,6 +177,10 @@ variable_measure_table |>
 
 ## Bias and Ethics
 
+It is important to acknowledge that observations and data from the 2014, 2016, 2018, and 2021 US General Social Survey (GSS) may have been influenced by social trends occurring in the world around participants. These could include and are not limited to the deaths of Michael Brown and Eric Garner as a result of police brutality in 2014, the presidential election in 2016, the immigration crisis in 2018, and the continuing COVID-19 pandemic in 2021. However, this is in part, part of the importance of the GSS, to track social trends. This is why I have chosen to compare four years of survey results, to gain a better perspective of these social trends with acknowledgement of the global circumstances in which they are reported under.
+
+One point of bias that does need to be addressed is the difference in surveying techniques. The US General Social Survey (GSS) was conducted in person in the years 2014, 2016, and 2018, however, due to the COVID-19 pandemic, it was changed to being an online survey resulting in a higher rate of non-response. The 2021 GSS controlled for this by adjusting population totals to ensure that the weighted totals closely matched the U.S. Census Bureau's estimates of sex, age, education, race, region, and ethnicity [@citegsscodebook]. Additionally, due to the survey being online, household enumeration was impossible, so households were asked to identity the adult with the most recent birthday [@citegsscodebook]. This is problematic as it may have missed some household residents who were temporarily living abroad, adult children, etc. [@citegsscodebook]. Measures were taken to control for this by conducting tests of significant to look for differences in trend estimates [@citegsscodebook]. Additionally, in the years where the survey was conducted in-person, there may have been instances of variance in how interviewers asked questions which could have led to bias in the results.
+
 # Model
 
 The goal of our modelling strategy is twofold. Firstly,...
