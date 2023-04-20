@@ -54,6 +54,10 @@ Raw references used within the .qmd file are available at
 
 `outputs/references.bib`
 
+## Modelling 
+
+...
+
 ## Simulating Data
 
 Simulated data for this project is located at
