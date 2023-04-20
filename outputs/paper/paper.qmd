@@ -274,31 +274,30 @@ One point of bias that does need to be addressed is the difference in surveying 
 ```{r}
 #| include: false
 #| message: false
-#### Creating Graph ####
+#### Creating Graph for comparison 2021 respondent's birth cohort against marital status ####
 cohort_marital_2021 <- ggplot(data=cleaned_gss_2021, aes(x = cohort, fill = marital)) + #assign ggplot to new variable in order to use patchwork package later
   geom_bar(width =.8) +
   theme_classic() + 
   labs(
     x = "Birth Cohort",
-    y = "Number of Respondents",
+    y = "# of Respondents ",
     fill = "Marital Status",
     caption = "2021 GSS"
   ) +
-  scale_fill_brewer(palette="Spectral")+
-  theme(legend.position = "none") + #include legend at bottom to ensure readability when using patchwork package
+  scale_fill_brewer(palette="Spectral") + 
   theme(text = element_text(size=6))
 ```
 
 ```{r}
 #| include: false
 #| message: false
-#### Creating Graph ####
+#### Creating Graph for comparison 2018 respondent's birth cohort against marital status ####
 cohort_marital_2018 <- ggplot(data=cleaned_gss_2018, aes(x = cohort, fill = marital)) + #assign ggplot to new variable in order to use patchwork package later
   geom_bar(width =.8) +
   theme_classic() + 
   labs(
     x = "Birth Cohort",
-    y = "Number of Respondents ",
+    y = "# of Respondents ",
     fill = "Marital Status",
     caption = "2018 GSS"
   ) +
@@ -310,13 +309,13 @@ cohort_marital_2018 <- ggplot(data=cleaned_gss_2018, aes(x = cohort, fill = mari
 #| include: false
 #| message: false
 
-#### Creating Graph####
+#### Creating Graph for comparison 2016 respondent's birth cohort against marital status ####
 cohort_marital_2016 <- ggplot(data=cleaned_gss_2016, aes(x = cohort, fill = marital)) + #assign ggplot to new variable in order to use patchwork package later
   geom_bar(width =.8) +
   theme_classic() + 
   labs(
     x = "Birth Cohort",
-    y = "Number of Respondents",
+    y = "# of Respondents",
     fill = "Marital Status",
     caption = "2016 GSS"
   ) +
@@ -329,13 +328,13 @@ cohort_marital_2016 <- ggplot(data=cleaned_gss_2016, aes(x = cohort, fill = mari
 #| include: false
 #| message: false
 
-#### Creating Graph ####
+#### Creating Graph for comparison 2014 respondent's birth cohort against marital status ####
 cohort_marital_2014 <- ggplot(data=cleaned_gss_2014, aes(x = cohort, fill = marital)) + #assign ggplot to new variable in order to use patchwork package later
   geom_bar(width =.8) +
   theme_classic() + 
   labs(
     x = "Birth Cohort",
-    y = "Number of Respondents",
+    y = "# of Respondents",
     fill = "Marital Status",
     caption = "2014 GSS"
   ) +
@@ -362,12 +361,12 @@ cohort_marital_2014 <- ggplot(data=cleaned_gss_2014, aes(x = cohort, fill = mari
 #| include: false
 #| message: false
 
-#### Creating Graph ####
+#### Creating Graph for comparison 2021 respondent's political party identity against marital status ####
 partyid_marital_2021 <- ggplot(data=cleaned_gss_2021, aes(x = partyid, fill = marital)) + #assign ggplot to new variable in order to use patchwork package later
   geom_bar(width =.8) +
   theme_classic() + 
   labs(
-    x = "Political Identification",
+    x = "Political Identity",
     y = "# of Respondents",
     fill = "Marital Status",
     caption = "2021 GSS"
@@ -381,13 +380,12 @@ partyid_marital_2021 <- ggplot(data=cleaned_gss_2021, aes(x = partyid, fill = ma
 ```{r}
 #| include: false
 #| message: false
-
-#### Creating Graph ####
+#### Creating Graph for comparison 2018 respondent's political party identity against marital status ####
 partyid_marital_2018 <- ggplot(data=cleaned_gss_2018, aes(x = partyid, fill = marital)) + #assign ggplot to new variable in order to use patchwork package later
   geom_bar(width =.8) +
   theme_classic() + 
   labs(
-    x = "Political Identification",
+    x = "Political Identity",
     y = "# of Respondents",
     fill = "Marital Status",
     caption = "2018 GSS"
@@ -402,12 +400,12 @@ partyid_marital_2018 <- ggplot(data=cleaned_gss_2018, aes(x = partyid, fill = ma
 #| include: false
 #| message: false
 
-#### Creating Graph ####
+#### Creating Graph for comparison 2016 respondent's political party identity against marital status ####
 partyid_marital_2016 <- ggplot(data=cleaned_gss_2016, aes(x = partyid, fill = marital)) + #assign ggplot to new variable in order to use patchwork package later
   geom_bar(width =.8) +
   theme_classic() + 
   labs(
-    x = "Political Identification",
+    x = "Political Identity",
     y = "# of Respondents",
     fill = "Marital Status",
     caption = "2016 GSS"
@@ -422,12 +420,12 @@ partyid_marital_2016 <- ggplot(data=cleaned_gss_2016, aes(x = partyid, fill = ma
 #| include: false
 #| message: false
 
-#### Creating Graph ####
+#### Creating Graph for comparison 2014 respondent's political party identity against marital status ####
 partyid_marital_2014 <- ggplot(data=cleaned_gss_2014, aes(x = partyid, fill = marital)) + #assign ggplot to new variable in order to use patchwork package later
   geom_bar(width =.8) +
   theme_classic() + 
   labs(
-    x = "Political Identification",
+    x = "Political Identity",
     y = "# of Respondents",
     fill = "Marital Status",
     caption = "2014 GSS"
@@ -441,7 +439,7 @@ partyid_marital_2014 <- ggplot(data=cleaned_gss_2014, aes(x = partyid, fill = ma
 #| echo: false
 #| warning: false
 #| label: fig-3
-#| fig-cap: "2014-2021 Comparisons of Birth Cohort Against Respondent Marital Status"
+#| fig-cap: "2014-2021 Comparisons of Political Party Identity Against Respondent's Marital Status"
 #### Using Patchwork Package to Combine Two Graphs ####
 (partyid_marital_2021) + (partyid_marital_2018) + (partyid_marital_2016) + (partyid_marital_2014)+ 
   plot_annotation(tag_levels = 'A') +
@@ -536,7 +534,7 @@ cleaned_gss_2014|>
 #| include: false
 #| message: false
 
-#### Creating Graph ####
+#### Creating Graph for comparison 2021 respondent's political spectrum identity against marital status ####
 polviews_marital_2021 <- ggplot(data=cleaned_gss_2021, aes(x = polviews, fill = marital)) + #assign ggplot to new variable in order to use patchwork package later
   geom_bar(width =.8) +
   theme_classic() + 
@@ -556,7 +554,7 @@ polviews_marital_2021 <- ggplot(data=cleaned_gss_2021, aes(x = polviews, fill = 
 #| include: false
 #| message: false
 
-#### Creating Graph ####
+#### Creating Graph for comparison 2018 respondent's political spectrum identity against marital status ####
 polviews_marital_2018 <- ggplot(data=cleaned_gss_2018, aes(x = polviews, fill = marital)) + #assign ggplot to new variable in order to use patchwork package later
   geom_bar(width =.8) +
   theme_classic() + 
@@ -576,7 +574,7 @@ polviews_marital_2018 <- ggplot(data=cleaned_gss_2018, aes(x = polviews, fill = 
 #| include: false
 #| message: false
 
-#### Creating Graph ####
+#### Creating Graph for comparison 2016 respondent's political spectrum identity against marital status ####
 polviews_marital_2016 <- ggplot(data=cleaned_gss_2016, aes(x = polviews, fill = marital)) + #assign ggplot to new variable in order to use patchwork package later
   geom_bar(width =.8) +
   theme_classic() + 
@@ -596,7 +594,7 @@ polviews_marital_2016 <- ggplot(data=cleaned_gss_2016, aes(x = polviews, fill = 
 #| include: false
 #| message: false
 
-#### Creating Graph ####
+#### Creating Graph for comparison 2024 respondent's political spectrum identity against marital status ####
 polviews_marital_2014 <- ggplot(data=cleaned_gss_2014, aes(x = polviews, fill = marital)) + #assign ggplot to new variable in order to use patchwork package later
   geom_bar(width =.8) +
   theme_classic() + 
@@ -616,7 +614,7 @@ polviews_marital_2014 <- ggplot(data=cleaned_gss_2014, aes(x = polviews, fill = 
 #| warning: false
 #| label: fig-4
 #| fig-cap: "2014-2021 Comparisons of Birth Cohort Against Respondent Marital Status"
-#### Using Patchwork Package to Combine Two Graphs ####
+#### Using Patchwork Package to Combine four Graphs ####
 (polviews_marital_2021) + (polviews_marital_2018) + (polviews_marital_2016) + (polviews_marital_2014)+ 
   plot_annotation(tag_levels = 'A') +
   plot_layout(ncol = 2)+
@@ -627,12 +625,14 @@ polviews_marital_2014 <- ggplot(data=cleaned_gss_2014, aes(x = polviews, fill = 
 #| echo: false
 #| warning: false
 #| label: tbl-8
-#| tbl-cap: "Marital Status vs. Self-Ascribed Belonging to Political Parties of 2014 Respondents"
+#| tbl-cap: "Marital Status vs. Self-Ascribed Placement on Political of 2014 Respondents"
+
+#### Creating Table for comparison 2021 respondent's political spectrum identity against marital status ####
 
 cleaned_gss_2021|>
-  tabyl(partyid, marital)|>
+  tabyl(polviews, marital)|>
   kable(col.names = c(
-    "Political Identity",
+    "Political Spectrum",
     "Married",
     "Never Married",
     "Separated",
@@ -647,12 +647,14 @@ cleaned_gss_2021|>
 #| echo: false
 #| warning: false
 #| label: tbl-9
-#| tbl-cap: "Marital Status vs. Self-Ascribed Belonging to Political Parties of 2014 Respondents"
+#| tbl-cap: "Marital Status vs. Self-Ascribed Placement on Political of 2018 Respondents"
+
+#### Creating Table for comparison 2021 respondent's political spectrum identity against marital status ####
 
 cleaned_gss_2018|>
-  tabyl(partyid, marital)|>
+  tabyl(polviews, marital)|>
   kable(col.names = c(
-    "Political Identity",
+    "Political Spectrum",
     "Married",
     "Never Married",
     "Separated",
@@ -667,12 +669,14 @@ cleaned_gss_2018|>
 #| echo: false
 #| warning: false
 #| label: tbl-10
-#| tbl-cap: "Marital Status vs. Self-Ascribed Belonging to Political Parties of 2014 Respondents"
+#| tbl-cap: "Marital Status vs. Self-Ascribed Placement on Political of 2016 Respondents"
+
+#### Creating Table for comparison 2021 respondent's political spectrum identity against marital status ####
 
 cleaned_gss_2016|>
-  tabyl(partyid, marital)|>
+  tabyl(polviews, marital)|>
   kable(col.names = c(
-    "Political Identity",
+    "Political Spectrum",
     "Married",
     "Never Married",
     "Separated",
@@ -687,12 +691,14 @@ cleaned_gss_2016|>
 #| echo: false
 #| warning: false
 #| label: tbl-11
-#| tbl-cap: "Marital Status vs. Self-Ascribed Belonging to Political Parties of 2014 Respondents"
+#| tbl-cap: "Marital Status vs. Self-Ascribed Placement on Political of 2014 Respondents"
+
+#### Creating Table for comparison 2021 respondent's political spectrum identity against marital status ####
 
 cleaned_gss_2014|>
-  tabyl(partyid, marital)|>
+  tabyl(polviews, marital)|>
   kable(col.names = c(
-    "Political Identity",
+    "Political Spectrum",
     "Married",
     "Never Married",
     "Separated",
@@ -705,11 +711,16 @@ cleaned_gss_2014|>
 
 # Model
 
-The goal of our modelling strategy is twofold. Firstly,...
-
-Here we briefly describe the Bayesian analysis model used to investigate... Background details and diagnostics are included in [Appendix -@sec-model-details].
+In this section I briefly describe the **(model(?))** used to investigate the relationship between Political Identity and Marital Status.
 
 ## Model set-up
+
+$$\hat{y} = \beta_0 + \beta_1$$ 
+$\hat{y}$ is marital status 
+$\beta_0$ is the political party identity 
+$\beta_1$ is the placement on the political spectrum.
+
+\--
 
 Define $y_i$ as the number of seconds that the plane remained aloft. Then $\beta_i$ is the wing width and $\gamma_i$ is the wing length, both measured in millimeters.
 
