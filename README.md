@@ -1,4 +1,6 @@
-# GSS Marriage Politics Analysis
+# Cathing Up With Republicans: Democratic Marriage Rates Are on the Rise
+
+## An Analysis of 2014-2021 U.S. General Social Survey Data
 
 ## Overview
 
@@ -21,7 +23,6 @@ Following the download of your environment, you will need to download the packag
 -   `haven`
 -   `janitor`
 -   `readr`
--   `rstanarm`
 -   `tibble`
 
 ## Downloading Data
