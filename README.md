@@ -1,4 +1,4 @@
-# Cathing Up With Republicans: Democratic Marriage Rates Are on the Rise
+# Catching Up With Republicans: Democratic Marriage Rates Are on the Rise
 
 ## An Analysis of 2014-2021 U.S. General Social Survey Data
 
@@ -12,18 +12,19 @@ This analysis requires RStudio and Quarto. To complete this project you will nee
 
 Following the download of your environment, you will need to download the packages associated with this project. These are:
 
--   `tidyverse`
+-   `dplyr`
 -   `ggplot2`
--   `RColorBrewer`
+-   `haven`
+-   `here`
+-   `janitor`
 -   `kableExtra`
 -   `knitr`
--   `dplyr`
--   `here`
 -   `labelled`
--   `haven`
--   `janitor`
+-   `patchwork`
+-   `RColorBrewer`
 -   `readr`
 -   `tibble`
+-   `tidyverse`
 
 ## Downloading Data
 
