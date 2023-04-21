@@ -1,12 +1,12 @@
 ---
-title: "Democratic Marriage Rates on the Rise: Catching Up With Republicans"
-subtitle: "An Analysis of the 2014-2021 U.S. General Social Survey Data"
+title: "Cathing Up With Republicans: Democratic Marriage Rates Are on the Rise"
+subtitle: "An Analysis of 2014-2021 U.S. General Social Survey Data"
 author: 
   - Chloe Thierstein
 thanks: "Code and data are available at: https://github.com/cthierst/marital_status_politics_gss_analysis.git"
 date: "April 20, 2023"
 date-format: "D MMMM YYYY"
-abstract: "First sentence. Second sentence. Third sentence. Fourth sentence."
+abstract: "Political identification is an important indicator of marital status within the United States and helps develop understandings of solidarity and division within the U.S. This paper investigates the relationship between political identification and marital status using four years of data from the U.S. General Social Survey. The analysis of this data reveals that marriages among left-leaning U.S. citizens is on the rise despite variances in the reporting of political identification."
 format: pdf
 toc: TRUE
 number-sections: TRUE
@@ -137,15 +137,23 @@ cleaned_gss_2014$polviews <-
 
 # Introduction
 
+Marital status, especially marriage, is a vital indicator of both solidarity and division within the United States [@citefamilystudies]. It is often thought that politically right-leaning couples are more likely to be happily married in comparison to those who are politically left-leaning, resulting in higher marriage rates among this group [@citeuvatoday]. Yet, key factors in discerning how individuals identify politically are not always clear and the impact of political identification on other marital statuses are not often explored.
+
+This paper seeks to explore the importance of the relationship between political identification and marital status in the United States. To conduct this analysis, I utilized data from the 2014, 2016, 2018, and 2021 U.S. General Social Survey (GSS) to analyze the relationship between political identification and marital status. The estimand being explored in this paper is, how does political identification, as measured through self-described identification with a political party and self-described placement on the political spectrum, influence marital status.
+
+Key insights found from this analysis are that marriage rates among U.S. citizens who identify with the Democratic Party as well as those who identify as left leaning on the political spectrum have risen significantly since 2014. I speculate that this rise can be due in part to the legalization of same-sex marriage in 2015 which allowed LGBTQ2SA+ individuals, who often identify with the Democratic Party, to get married at significant rates [@citepewlgbtq]. Additionally, it was found that there are variations in how U.S. citizens choose to disclose their political identity resulting in mixed results covering other marital statuses outlined in this analysis. From this result, I further discuss trends in media around "extremism" as potential influencing factors for these variations.
+
+This paper is structured as follows, @sec-data provides discourse over the data source, sampling, biases and ethical considerations, and central data points. @sec-discussion provides a discussion of the results of this paper. Following this, @sec-discussion overviews the importance of the results against current literature, @sec-limitations discusses the limitations and weaknesses of my analysis, and @sec-future briefly covers future research further to grow our understanding of American marriage demographics.
+
 # Data {#sec-data}
 
 ## Data Management
 
-This paper uses the R statistical programming language [@citeR], along with several packages, tidyverse [@citetidyverse], janitor [@citejanitor], here [@citehere], and [@citedplyr]. All figures in this paper were created using the packages ggplot2 [@citeggplot2] and the tables were created using knitr [@citeknitr] and kableExtra[@citekablextra]. Combinations of figures were created using [@citepatchwork] The color styling of graphs has been created using RColorBrewer [@citecolorbrewer].
+This paper uses the R statistical programming language [@citeR], along with several packages, tidyverse [@citetidyverse], janitor [@citejanitor], here [@citehere], and [@citedplyr]. All figures in this paper were created using the packages ggplot2 [@citeggplot2] and the tables were created using knitr [@citeknitr] and kableExtra[@citekablextra]. Combinations of figures were created using the patchwork package [@citepatchwork] The color styling of graphs has been created using RColorBrewer [@citecolorbrewer].
 
 ## Source
 
-The data within this paper was extracted from the 2014, 2016, 2018 and 2021 United States General Social Survey (GSS). This survey is a series of nationally representative cross-sectional interviews that collects data on contemporary American society to explain and monitor trends in attitudes, opinions and behaviours [@citegsscodebook]. It began tracking these trends in 1972, and has primarily used in-person data collection as its method of data collection [@citegsscodebook]. In 2021, the survey moved to an address-based sampling method with a focus on web-based self-administered questionnaires [@citegsscodebook].
+The data within this paper was extracted from the 2014, 2016, 2018 and 2021 United States General Social Survey (GSS). This survey is a series of nationally representative cross-sectional interviews that collects data on contemporary American society to explain and monitor trends in attitudes, opinions, and behaviours [@citegsscodebook]. It began tracking these trends in 1972 and has primarily used in-person data collection as its method of data collection [@citegsscodebook]. In 2021, the survey moved to an address-based sampling method with a focus on web-based self-administered questionnaires [@citegsscodebook].
 
 ## Sampling
 
@@ -192,7 +200,7 @@ variable_table |>
 
 ## Key Features
 
-This paper explores the estimands, does political affiliation as measured through political views and identification impact marital status' and what influence does generational cohort and sex have. This paper explores these estimands through an analysis of the sample populations described in @tbl-1 under "Total \# of Responses Used in Analysis." Responses were removed to account for unanswered or not applicable responses. I did this to ensure the representative and completeness of all variables analyzed. Additionally, in the data cleaning process, the cohort variable was manipulated to combine respondent's birth years into their generational cohort for more coherent analysis. The variables selected for analysis can be viewed in @tbl-2 and their measurement levels can be viewed in @tbl-3. Responses were measured using Likert scales which measure respondents' opinions to questions, and multiple choice questions.
+This paper explores the estimand, how does political identification, as measured through self-described identification with a political party and self-described placement on the political spectrum, influence marital status. This exploration is conducted through an analysis of the sample populations described in @tbl-1 under "Total \# of Responses Used in Analysis." Responses were removed to account for unanswered or not applicable responses. I did this to ensure the representative and completeness of all variables analyzed. Additionally, in the data cleaning process, the cohort variable was manipulated to combine respondent's birth years into their generational cohort for more coherent analysis. The variables selected for analysis can be viewed in @tbl-2 and their measurement levels can be viewed in @tbl-3. Responses were measured using Likert scales which measure respondents' opinions to questions, and multiple-choice questions.
 
 ```{r}
 #| include: false
@@ -271,11 +279,11 @@ variable_measure_table |>
 
 It is important to acknowledge that observations and data from the 2014, 2016, 2018, and 2021 US General Social Survey (GSS) may have been influenced by social trends occurring in the world around participants. These could include and are not limited to the deaths of Michael Brown and Eric Garner as a result of police brutality in 2014, the presidential election in 2016, the immigration crisis in 2018, and the continuing COVID-19 pandemic in 2021. However, this is in part, part of the importance of the GSS, to track social trends. This is why I have chosen to compare four years of survey results, to gain a better perspective of these social trends with acknowledgement of the global circumstances in which they are reported under. Although it is important to note that these cannot be direct comparison as the number of those surveyed is different between years as can be seen in @tbl-1
 
-One point of bias that does need to be addressed is the difference in surveying techniques. The US General Social Survey (GSS) was conducted in person in the years 2014, 2016, and 2018, however, due to the COVID-19 pandemic, it was changed to being an online survey resulting in a higher rate of non-response. The 2021 GSS controlled for this by adjusting population totals to ensure that the weighted totals closely matched the U.S. Census Bureau's estimates of sex, age, education, race, region, and ethnicity [@citegsscodebook]. Additionally, due to the survey being online, household enumeration was impossible, so households were asked to identity the adult with the most recent birthday [@citegsscodebook]. This is problematic as it may have missed some household residents who were temporarily living abroad, adult children, etc. [@citegsscodebook]. Measures were taken to control for this by conducting tests of significant to look for differences in trend estimates [@citegsscodebook]. Additionally, in the years where the survey was conducted in-person, there may have been instances of variance in how interviewers asked questions which could have led to bias in the results.
+Another point of bias that needs to be addressed is the difference in surveying techniques. The US General Social Survey (GSS) was conducted in person in the years 2014, 2016, and 2018, however, due to the COVID-19 pandemic, it was changed to being an online survey resulting in a higher rate of non-response. The 2021 GSS controlled for this by adjusting population totals to ensure that the weighted totals closely matched the U.S. Census Bureau's estimates of sex, age, education, race, region, and ethnicity [@citegsscodebook]. Additionally, due to the survey being online, household enumeration was impossible, so households were asked to identity the adult with the most recent birthday [@citegsscodebook]. This is problematic as it may have missed some household residents who were temporarily living abroad, adult children, etc. [@citegsscodebook]. Measures were taken to control for this by conducting tests of significant to look for differences in trend estimates [@citegsscodebook]. Additionally, in the years where the survey was conducted in-person, there may have been instances of variance in how interviewers asked questions which could have led to bias in the results.
 
 ### Marital Status and Generational Cohort
 
-Another important point of bias to acknowledge is the effect of generational cohort on marital status. As can be seen in @fig-1, the effects of age on generational cohorts largely impacts the marital status. For example, in 2014, there are significantly more respondent's belonging to the "Post-War" cohort and no respondent's belonging to the "Gen Z" cohort. This is influential as the 2014 data is missing marital rates from the "Gen Z" cohort as they were not old enough to be surveyed, thereby distorting marital rates in that year when compared to the follow three years. Additionally, due to the young age of "Gen Z", respondents many have not reached the age where they are looking for long-term relationships resulting in very few being married and even less being divorced and widowed, as shown in @fig-1. However, it is important to include them in this analysis as they are a growing and extremely relevant cohort in demographic studies. Additionally, it is noticeable that trends in marriage between generational cohorts are shifting as can be seen by the increase of "Never Married" respondents between cohorts each year. This is significant as it may act as a co-indicator of marital rates in the U.S.
+Additionally, another important point of bias to acknowledge is the effect of generational cohort on marital status. As can be seen in @fig-1, the effects of age on generational cohorts largely impacts the marital status. For example, in 2014, there are significantly more respondent's belonging to the "Post-War" cohort and no respondent's belonging to the "Gen Z" cohort. This is influential as the 2014 data is missing marital rates from the "Gen Z" cohort as they were not old enough to be surveyed, thereby distorting marital rates in that year when compared to the follow three years. Additionally, due to the young age of "Gen Z", respondents many have not reached the age where they are looking for long-term relationships resulting in very few being married and even less being divorced and widowed, as shown in @fig-1. However, it is important to include them in this analysis as they are a growing and extremely relevant cohort in demographic studies. Additionally, it is noticeable that trends in marriage between generational cohorts are shifting as can be seen by the increase of "Never Married" respondents between cohorts each year. This is significant as it may act as a co-indicator of marital rates in the U.S.
 
 ```{r}
 #| include: false
@@ -451,6 +459,8 @@ sex_marital_2014 <- ggplot(data=cleaned_gss_2014, aes(x = sex, fill = marital)) 
   plot_layout(guides = "collect")
 ```
 
+# Results {#sec-results}
+
 ## Marital Status and Self-Described Identification With a Political Party
 
 ```{r}
@@ -531,7 +541,7 @@ partyid_marital_2014 <- ggplot(data=cleaned_gss_2014, aes(x = partyid, fill = ma
   theme(text = element_text(size=6)) 
 ```
 
-When looking at @fig-3, we can see that depending on the year, there are large variations in how respondent's choose to identify with the political parties in the United States. When comparing 2014 to 2021 in @fig-3, we can observe that in this period, respondent's have become more likely to make a "strong" choice in what political party they identify with as there was a more even distribution of responses in the years prior to 2021. Additionally, we can observe that those identifying with the Republican Party, indicating as "Strong Republican" and "Not Very Strong Republican", have maintained strong marriage rates in each year when compared to other marital statuses. This is in contrast to those identifying with the Democratic Party, indicating as "Strong Democrat" and "Not Very Strong Democrat" as their marriage rates seem to be less stable, increasing and decreasing based on the year, with the most significant increase occurring in 2021.
+When looking at @fig-3, we can see that depending on the year, there are large variations in how respondent's choose to identify with the political parties in the United States. When comparing 2014 to 2021 in @fig-3, we can observe that in this period, respondents have become more likely to make a "strong" choice in what political party they identify with as there was a more even distribution of responses in the years prior to 2021. Additionally, we can observe that those identifying with the Republican Party, indicating as "Strong Republican" and "Not Very Strong Republican", have maintained strong marriage rates in each year when compared to other marital statuses. This contrasts with those identifying with the Democratic Party, indicating as "Strong Democrat" and "Not Very Strong Democrat" as their marriage rates seem to be less stable, increasing and decreasing based on the year, with the most significant increase occurring in 2021.
 
 ```{r}
 #| echo: false
@@ -546,7 +556,7 @@ When looking at @fig-3, we can see that depending on the year, there are large v
   plot_layout(guides = "collect")
 ```
 
-Looking at @tbl-4, @tbl-5, @tbl-6, and @tbl-7, we can see that
+Looking at @tbl-4, @tbl-5, @tbl-6, and @tbl-7, we can see clearly the marital status rates compared to self-described identification with a political party over the course of the four-year period. From these tables we can see that overall, there has been an increase in marriages from both those identifying as Democrats and as Republican. Interestingly, those who responded, "Never Married" or "Divorced" continue to identify more commonly with the Democratic party, although this is not consistent overtime as in 2018, although this is not linear. Additionally, looking further at @tbl-4, @tbl-5, @tbl-6, and @tbl-7, we can see that the option, "Separated" is considerably less selected across all years and identification with political party, suggesting that separations may be uncommon in the United States. Furthermore, we can see from these tables that across all four years, those who identify with the Democratic Party report being widowed more often than those who are Republican. Although, this effect lessens in 2021, as reports of being "Widowed" become less varied across identification with political parties.
 
 ```{r}
 #| echo: false
@@ -557,7 +567,7 @@ Looking at @tbl-4, @tbl-5, @tbl-6, and @tbl-7, we can see that
 cleaned_gss_2021|>
   tabyl(partyid, marital)|>
   kable(col.names = c(
-    "Political Identity",
+    "Identification with Political Party",
     "Married",
     "Never Married",
     "Separated",
@@ -578,7 +588,7 @@ cleaned_gss_2021|>
 cleaned_gss_2018|>
   tabyl(partyid, marital)|>
   kable(col.names = c(
-    "Political Identity",
+    "Identification with Political Party",
     "Married",
     "Never Married",
     "Separated",
@@ -598,7 +608,7 @@ cleaned_gss_2018|>
 cleaned_gss_2016|>
   tabyl(partyid, marital)|>
   kable(col.names = c(
-    "Political Identity",
+    "Identification with Political Party",
     "Married",
     "Never Married",
     "Separated",
@@ -618,7 +628,7 @@ cleaned_gss_2016|>
 cleaned_gss_2014|>
   tabyl(partyid, marital)|>
   kable(col.names = c(
-    "Political Identity",
+    "Identification with Political Party",
     "Married",
     "Never Married",
     "Separated",
@@ -629,7 +639,45 @@ cleaned_gss_2014|>
     linesep = "")
 ```
 
+## Self-Described Identification With a Political Party and Self-Described Placement on the Political Spectrum
+
+When looking at @tbl-8, we can see that there is an interesting variance in respondent's self-described identification with a political party and their self-described placement on the political spectrum. Meaning that those who describe themselves as either "Strong Republican\[s\]" or "Strong Democrat\[s\]" are not equally as likely to describe themselves as "Extremely Conservative" and "Extremely Liberal". Instead, respondents in this category choose less extreme points on the political spectrum to identify themselves with. this is important to keep in mind as we discuss placement on the political spectrum as there are generally more negative tones expressed towards either end of the spectrum in the public eye, which may influence these results.
+
+```{r}
+#| messages: false
+#| echo: false
+#| warning: false
+#| label: tbl-8
+#| tbl-cap: "Comparison of Respondent's Self-Described Identification With a Political Party vs. Self-Described Placement on the Political Spectrum"
+
+cleaned_gss_2021|>
+  tabyl(partyid, polviews) |>
+  kable(col.names = c(
+      "Identification with Political Party",
+      "Extremely Liberal",
+      "Liberal",
+      "Slightly Liberal",
+      "Moderate",
+      "Slightly Conservative",
+      "Conservative",
+      "Extremely Conservative"
+    ),
+    booktabs = TRUE,
+    linesep = "")|>
+  column_spec(1, width = "10em")|>
+  column_spec(2, width = "5em")|>
+  column_spec(3, width = "5em")|>
+  column_spec(4, width = "5em")|>
+  column_spec(5, width = "5em")|>
+  column_spec(6, width = "6em")|>
+  column_spec(7, width = "5em")|>
+  column_spec(8, width = "6em")|>
+  kable_styling(font_size = 8, latex_options = "hold_position")
+```
+
 ## Marital Status and Self-Described Placement on the Political Spectrum
+
+By looking at @fig-4, we can see that regardless of year, respondent reporting of being "moderate" on the political spectrum is significantly higher than any other point on the scale. However, we can also see that the levels of respondents placing themselves closer to either end of the spectrum has been on the rise since 2014. We can also see in @fig-4, that until 2021, those indicating to be closer to the left side of the spectrum, were less likely to indicate "Married", instead seeming to prefer to indicate "Never Married". The large growth of left-leaning respondent's choosing "Married" in 2021, indicates a large and rapid increase in marriage among liberal respondents. Importantly, @fig-4 illustrates the rise of marriages among left-leaning people in the U.S., more clearly than what could be seen in @fig-3.
 
 ```{r}
 #| include: false
@@ -640,7 +688,7 @@ polviews_marital_2021 <- ggplot(data=cleaned_gss_2021, aes(x = polviews, fill = 
   geom_bar(width =.8) +
   theme_classic() + 
   labs(
-    x = "Political View",
+    x = "Political Spectrum",
     y = "# of Respondents",
     fill = "Marital Status",
     caption = "2021 GSS"
@@ -660,7 +708,7 @@ polviews_marital_2018 <- ggplot(data=cleaned_gss_2018, aes(x = polviews, fill = 
   geom_bar(width =.8) +
   theme_classic() + 
   labs(
-    x = "Political View",
+    x = "Political Spectrum",
     y = "# of Respondents",
     fill = "Marital Status",
     caption = "2018 GSS"
@@ -680,7 +728,7 @@ polviews_marital_2016 <- ggplot(data=cleaned_gss_2016, aes(x = polviews, fill = 
   geom_bar(width =.8) +
   theme_classic() + 
   labs(
-    x = "Political View",
+    x = "Political Spectrum",
     y = "# of Respondents",
     fill = "Marital Status",
     caption = "2016 GSS"
@@ -700,7 +748,7 @@ polviews_marital_2014 <- ggplot(data=cleaned_gss_2014, aes(x = polviews, fill = 
   geom_bar(width =.8) +
   theme_classic() + 
   labs(
-    x = "Political View",
+    x = "Political Spectrum",
     y = "# of Respondents",
     fill = "Marital Status",
     caption = "2014 GSS"
@@ -723,40 +771,20 @@ polviews_marital_2014 <- ggplot(data=cleaned_gss_2014, aes(x = polviews, fill = 
   plot_layout(guides = "collect")
 ```
 
+This shift is further shown in @tbl-9, @tbl-10, @tbl-11, and @tbl-12, as we can observe that there were only minor variations in the frequency of respondents, identifying as "Extremely Liberal", "Liberal", or "Slightly Liberal", selecting "Married" in 2014, 2016, and 2018. Whereas, in 2021, there was over a 65% increase in all categories of identification that chose "Married" as their status. This indicates that marriages among left-leaning U.S. citizens is on the rise, nearly matching that of right-leaning U.S. citizens. A similar trend is shown again from @tbl-4, @tbl-5, @tbl-6, and @tbl-7, as respondents who identify more with the left side of the political spectrum maintain their likeliness to select "Never Married" over their right-leaning counterparts. However, in contrast, when comparing self-described placement on the political spectrum to marital status, those who identify on the conservative side are more likely to select "Divorced" over liberal identifying respondents. These discrepancies indicate that there are other variables that need to be explored to indicate correlation between political identity and marital status.
+
 ```{r}
 #| echo: false
 #| warning: false
-#| label: tbl-8
-#| tbl-cap: "Marital Status vs. Self-Described Placement on the Political Spectrum Against Respondent Marital Status"
+#| label: tbl-9
+#| tbl-cap: "2021 Respondent's Marital Status vs. Self-Described Placement on the Political Spectrum"
 
 #### Creating Table for comparison 2021 respondent's political spectrum identity against marital status ####
 
 cleaned_gss_2021|>
   tabyl(polviews, marital)|>
   kable(col.names = c(
-    "Political Spectrum",
-    "Married",
-    "Never Married",
-    "Separated",
-    "Divorced",
-    "Widowed"
-    ),
-    booktabs = TRUE,
-    linesep = "")
-```
-
-```{r}
-#| echo: false
-#| warning: false
-#| label: tbl-9
-#| tbl-cap: "Marital Status vs. Self-Described Placement on the Political Spectrum Against Respondent Marital Status"
-
-#### Creating Table for comparison 2021 respondent's political spectrum identity against marital status ####
-
-cleaned_gss_2018|>
-  tabyl(polviews, marital)|>
-  kable(col.names = c(
-    "Political Spectrum",
+    "Placement on Political Spectrum",
     "Married",
     "Never Married",
     "Separated",
@@ -771,14 +799,14 @@ cleaned_gss_2018|>
 #| echo: false
 #| warning: false
 #| label: tbl-10
-#| tbl-cap: "Marital Status vs. Self-Described Placement the Political Spectrum Against Respondent Marital Status"
+#| tbl-cap: "2018 Respondent's Marital Status vs. Self-Described Placement on the Political Spectrum"
 
 #### Creating Table for comparison 2021 respondent's political spectrum identity against marital status ####
 
-cleaned_gss_2016|>
+cleaned_gss_2018|>
   tabyl(polviews, marital)|>
   kable(col.names = c(
-    "Political Spectrum",
+    "Placement on Political Spectrum",
     "Married",
     "Never Married",
     "Separated",
@@ -793,14 +821,14 @@ cleaned_gss_2016|>
 #| echo: false
 #| warning: false
 #| label: tbl-11
-#| tbl-cap: "Marital Status vs. Self-Described Placement the Political Spectrum Against Respondent Marital Status"
+#| tbl-cap: "2016 Respondent's Marital Status vs. Self-Described Placement on the Political Spectrum"
 
-#### Creating Table for comparison 2021 respondent's political spectrum identity against marital status ####
+#### Creating Table for comparison 2016 respondent's political spectrum identity against marital status ####
 
-cleaned_gss_2014|>
+cleaned_gss_2016|>
   tabyl(polviews, marital)|>
   kable(col.names = c(
-    "Political Spectrum",
+    "Placement on Political Spectrum",
     "Married",
     "Never Married",
     "Separated",
@@ -811,21 +839,47 @@ cleaned_gss_2014|>
     linesep = "")
 ```
 
-# Results
+```{r}
+#| echo: false
+#| warning: false
+#| label: tbl-12
+#| tbl-cap: "2014 Respondent's Marital Status vs. Self-Described Placement on the Political Spectrum"
 
-# Discussion
+#### Creating Table for comparison 2021 respondent's political spectrum identity against marital status ####
 
-# Limitations and Weaknesses
+cleaned_gss_2014|>
+  tabyl(polviews, marital)|>
+  kable(col.names = c(
+    "Placement on Political Spectrum",
+    "Married",
+    "Never Married",
+    "Separated",
+    "Divorced",
+    "Widowed"
+    ),
+    booktabs = TRUE,
+    linesep = "")
+```
 
-One weakness of this paper that must be acknowledged is the reliance of this analysis falling on the U.S. General Social Survey (GSS). This is a weakness as the respondent's chosen to participate in this survey change each year of the survey, making it difficult to track true marital status, and changes in individual's political identification. Additionally, due to the changes in how the GSS has been distributed over the four years analyzed in this paper, there may be missed dynamism and bias in the responses, reporting and recording of data. Additionally, no survey is perfect and response bias remains a high possibility within such large data collection samples. Additionally, the GSS does not report on sexual identity which is important to note as same-sex unions were not legalized throughout the United States until 2015, meaning that many respondent's may not have had the ability to marry in 2014 and years earlier. This could have resulted in the data being skewed towards Republicans having higher rates of marriages, despite rates of common-law marriages being perhaps equal in scale.
+# Discussion {#sec-discussion}
 
-# Future Research
+Marriage is an important indicator of both solidarity and division within the United States [@citefamilystudies]. Generally, it is reported that U.S. citizens who identify more strongly with the Republican party are more likely to be married, report marital happiness and be less likely to divorce their spouses over those that identify with the Democratic party [@citeuvatoday]. Although this can be attributed in part to the demographic make-up of many Republican couples being white, which reduces their exposure to segregation, poverty, and discrimination, resulting in less strain being put on their relationship [@citeuvatoday].
 
-More research on this topic should be conducted as it helps us gain a more meaningful understanding of how political identification in the United States may influence marital status. Further research into this topic should explore in-depth, questions about cohort, sex, gender-identity, and sexual preferences to gain a better understanding of American demographics. This future research will substantially influence demographic studies and American understanding of themselves.
+The analysis conducted within this paper presents political identification as an important indicator of marital status rates in the United States. As rates of marriages between left-leaning and Democratic identifying U.S. citizens have risen significantly since 2014, nearly catching up to their right-wing counterparts. A prime indicator that could be influencing this trend is the change in legislation in 2015 which legalized same-sex marriages in the U.S. Research shows that LGBTQ2SA+ U.S. citizens are consistently and overwhelmingly supportive of the Democratic Party [@citepewlgbtq]. This could indicate that the trends seen within this paper, increased marriages between left-leaning respondents, are indicative of a wave of marriages occurring within this group after 2014.
 
-# Acknowledgements 
+Additionally, this analysis shows discrepancies in how respondent's report their political identification between the two variables studied. This variance results in inconsistent findings around other marital status trends. This hesitation to identify strongly with a point on the political spectrum despite identifying strongly with a political party may be indicative of public opinion swaying the responses of respondents. This may be possible as the rise of divisive connotations regarding "Extremely Liberal" and "Extremely Conservative" identification have been seemingly streamed into the consciousness of many Americans from influential individuals, media, and politicians over the past couple of years. Resulting in the potential for individuals to be made to feel uncomfortable to report their true opinion. This is stated as extremism, especially from the far-right, is on the rise in the U.S. [@citeextremism].
 
-I would like to extend a special thanks to Myra Li, Justin Abando, Thi Hong An Nguyen, Rohan Alexander, and Sofia Sellitto for peer reviewing my work and providing valuable feedback and suggestions.
+## Limitations and Weaknesses {#sec-limitations}
+
+One weakness of this paper that must be acknowledged is the reliance of this analysis falling on the U.S. General Social Survey (GSS). This is a weakness as the respondent's chosen to participate in this survey change each year of the survey, making it difficult to track true marital status, and changes in individual's political identification. Additionally, due to the changes in how the GSS has been distributed over the four years analyzed in this paper, there may be missed dynamism and bias in the responses, reporting and recording of data. Additionally, no survey is perfect and response bias remains a high possibility within such large data collection samples. Additionally, the GSS does not report on sexual identity which is important to note as same-sex unions were not legalized throughout the United States until 2015, meaning that many respondents may not have had the ability to marry in 2014 and years earlier. This could have resulted in the data being skewed towards Republicans having higher rates of marriages, despite rates of common-law marriages being perhaps equal in scale.
+
+## Future Research {#sec-future}
+
+More research on this topic should be conducted to help us gain a more meaningful understanding of how political identification in the United States may influence marital status. Further research into this topic should explore, in-depth, questions surrounding cohort, sex, gender-identity, sexual preferences, and inter-political identification marriages to gain a more robust understanding of American demographics.
+
+# Acknowledgements  {#sec-acknowledgements}
+
+I would like to extend a special thanks to Myra Li, Justin Abando, Thi Hong An Nguyen, Rohan Alexander, and Sofia Sellitto for providing valuable feedback and suggestions through their reviews of my work.
 
 \newpage
 
