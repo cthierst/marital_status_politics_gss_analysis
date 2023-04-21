@@ -5,7 +5,7 @@
 # Contact: chloe.thierstein@mail.utoronto.ca
 # License: MIT
 # Pre-requisites: Need to be able to load in simulated data created
-# Other Notes: Test are applicable to all simulated data, the tests below test 2021
+# Other Notes: Tests are applicable to all simulated data, the tests below test 2021
 
 
 #### Workspace setup ####
