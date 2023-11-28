@@ -311,7 +311,7 @@ cohort_marital_2018 <- ggplot(data=cleaned_gss_2018, aes(x = cohort, fill = mari
   geom_bar(width =.8) +
   theme_classic() + 
   labs(
-    x = "enerational Cohort",
+    x = "Generational Cohort",
     y = "# of Respondents ",
     fill = "Marital Status",
     caption = "2018 GSS"
